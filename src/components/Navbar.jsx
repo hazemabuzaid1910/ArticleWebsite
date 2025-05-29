@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../assets/LOGO.svg';
-
 function Navbar() {
+   
+
+   
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className='sticky top-0 z-50'>
       <div className='bg-[#1D2026] text-white px-6  lg:px-20  lg:flex hidden justify-between items-center'>
         <ul className='hidden gap-4 lg:flex'>
-          {[{page :"Home",path:"/"}, {page:'Articles',path:"#"}, {page:'Vacancies',path:"/jobs"}, {page:'About Us',path:"/about"}, {page:'Contact',path:"/contact"}].map((item,index) => (
+          {[{page :"Home",path:"/"}, {page:'Articles',path:"/faqs"}, {page:'Vacancies',path:"/jobs"}, {page:'About Us',path:"/about"}, {page:'Contact',path:"/contact"}].map((item,index) => (
             <li key={index}>
               <Link to={item.path} className="relative inline-block px-4 py-4 before:content-[''] before:absolute before:left-0 before:top-0 before:w-full before:h-[2px] before:bg-orange-500 before:scale-x-0 hover:before:scale-x-100 focus:before:scale-x-100 before:origin-left before:transition-transform before:duration-300">
                 {item.page}
@@ -42,10 +44,10 @@ function Navbar() {
   </div>
 
   <div className='hidden gap-4 sm:flex'>
-    <Link to="#" className='py-2 bg-[#FFEEE8] text-[#FF6636] px-5 font-bold hover:bg-[#FF6636] hover:text-white transition duration-300'>
+    <Link to="/create-account" className='py-2 bg-[#FFEEE8] text-[#FF6636] px-5 font-bold hover:bg-[#FF6636] hover:text-white focus:bg-[#FF6636] focus:text-white transition duration-300'>
       Create Account
     </Link>
-    <Link to="#" className='py-2 bg-[#FF6636] text-white px-5 font-bold'>
+    <Link to="/signin" className='py-2 bg-[#FF6636] hover:text-white hover:bg-[#FF6636] focus:bg-[#FF6636] focus:text-white text-white px-5 font-bold'>
       Sign In
     </Link>
   </div>
@@ -73,7 +75,7 @@ function Navbar() {
           ))}
           <hr className="my-2 border-gray-600" />
           <li className="mt-4">
-            <Link to="#" className='block bg-[#FFEEE8] text-[#FF6636] px-4 py-2 font-bold rounded mb-2'>
+            <Link to="/create-account" className='block bg-[#FFEEE8] text-[#FF6636] px-4 py-2 font-bold rounded mb-2'>
               Create Account
             </Link>
             <Link to="#" className='block bg-[#FF6636] text-white px-4 py-2 font-bold rounded'>
