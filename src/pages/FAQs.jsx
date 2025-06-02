@@ -72,8 +72,8 @@ const categories = [
 ];
 
 function FAQs() {
-  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0); // الفئة المختارة
-  const [activeQuestionIndex, setActiveQuestionIndex] = useState(null); // السؤال المفتوح
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0); 
+  const [activeQuestionIndex, setActiveQuestionIndex] = useState(null); 
 
   const toggleQuestion = (index) => {
     setActiveQuestionIndex(index === activeQuestionIndex ? null : index);
@@ -138,8 +138,6 @@ function FAQs() {
         </form>
       </div>
       </div>
-
- 
     </div>
   );
 }

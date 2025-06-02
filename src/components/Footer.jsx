@@ -1,7 +1,9 @@
 import React from "react";
 import logo from "../assets/LOGO2.svg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
+  FaArrowDown,
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
@@ -9,7 +11,21 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { FaArrowRight, FaApple, FaGooglePlay } from "react-icons/fa6";
+import { IoIosArrowDown } from "react-icons/io";
+import '../i18n'
 const Footer = () => {
+    const [t,i18n]=useTranslation()
+    
+  const handleChange = (e) => {
+    if(e.target.value==='ar'){
+      document.body.style.direction= 'rtl'
+    } 
+    else {
+      document.body.style.direction= 'ltr'
+    }
+    i18n.changeLanguage(e.target.value);
+  };
+  
   return (
     <footer className="bg-[#1D2026]">
       <div className="flex flex-col items-center justify-between gap-5 px-5 py-20 sm:px-40 sm:flex-row">
@@ -129,8 +145,24 @@ const Footer = () => {
         </div>
       </div>
       <hr className="text-[#363B4780]" />
-      <div className="py-4 text-center">
+      <div className="flex justify-between py-4 text-center sm:px-[10rem]">
         <p className="text-[#8C94A3]">© 2025 - All rights reserved</p>
+      <div className="relative inline-block w-48">
+  <select
+     onChange={handleChange}
+   defaultValue={i18n.language}
+    className="w-full appearance-none border bg-[#1D2026] border-[#B7BAC7] text-[#E9EAF0] px-4 py-2 pr-10 rounded focus:outline-none"
+  >
+    <option value="ar" >العربية</option>
+    <option value="en">English</option>
+  </select>
+
+  {/* سهم مخصص */}
+  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+  <IoIosArrowDown color="#E9EAF0"/>
+  </div>
+</div>
+
       </div>
     </footer>
   );

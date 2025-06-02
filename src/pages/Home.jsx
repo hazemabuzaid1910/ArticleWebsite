@@ -43,8 +43,13 @@ import TopWriter from '../components/TopWriter'
   import person2 from '../assets/Image (2).png'
  import person3 from '../assets/Image (3).png'
  import person4 from '../assets/Image.png'
+import { useTranslation } from 'react-i18next'
+import { motion, scale } from "framer-motion";
 
 function Home() {
+  const [t,i18n]=useTranslation()
+  const isArabic = i18n.language === 'ar'; // إذا كنت تستخدم i18next
+
     const articles = [
   {
     title: "IT & Software",
@@ -160,45 +165,72 @@ const writer = [
 
 ];
   return (
-    <div className='relative w-full h-full'>
-<div className='bg-[#fafafa] flex sm:flex-row flex-col items-center justify-between leading-none'>
-  <div className='sm:pl-[5rem]  px-8  sm:w-[55%] sm:order-1 order-2'>
-    <div className='flex flex-col sm:gap-10 gap-4 py-5 sm:w-[90%] '>
-    <h1 className='sm:text-[72px] text-[28px] text-[#1D2026] font-[600] p-0 m-0 leading-none'>Learn with expert anytime anywhere</h1>
-    <p className='sm:text-[24px] text-[#4E5566] font-[400] leading-relaxed'>Our mission is to help people to find the best source online and learn with expert anytime, anywhere.</p>
-    <div className='flex flex-col gap-2 sm:flex-row'>
-      <Link to="#" className='bg-[#1D2026] text-white px-7 py-3 font-[600] text-center'>Start Reading</Link>
-      <Link to="#" className='bg-[#FF6636] text-white px-7 py-3 font-[600] text-center'>Create Account</Link>
+   <div className="relative w-full min-h-screen"> {/* ارتفاع الشاشة بالكامل */}
+ <div className="bg-[#fafafa] sm:h-[30rem] flex sm:flex-row flex-col items-stretch justify-between leading-none relative overflow-hidden">
+  
+  {/* القسم النصي يغطي كامل الارتفاع */}
+  <div className=" z-10 bg-[#fafafa] px-8 sm:w-[55%] sm:order-1 order-2 flex items-center h-full">
+    <div className="sm:px-[2rem] flex flex-col sm:gap-10 gap-4 sm:w-[90%] h-full justify-center">
+      <h1 className="sm:text-[60px] text-[28px] text-[#1D2026] font-[600] leading-none">
+        Learn with expert anytime anywhere
+      </h1>
+      <p className="sm:text-[24px] text-[#4E5566] font-[400] leading-relaxed">
+        Our mission is to help people to find the best source online and learn with expert anytime, anywhere.
+      </p>
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <Link to="#" className="bg-[#1D2026] text-white px-7 py-3 font-[600] text-center">
+          Start Reading
+        </Link>
+        <Link to="#" className="bg-[#FF6636] text-white px-7 py-3 font-[600] text-center">
+          Create Account
+        </Link>
+      </div>
     </div>
   </div>
+
+  {/* صورة الهيرو تتحرك من اليسار وتبقى أسفل النص */}
+  <div className="order-1 sm:order-2 sm:w-[50%] relative flex sm:items-center sm:justify-center h-full">
+    <img
+      src={triangle}
+      alt=""
+  className={`absolute h-full scale-150 top-0 ${isArabic ? ' -right-1 left-auto scale-x-[-1]' : 'left-0'} hidden object-cover h-full z-1 sm:flex`}
+    />
+    
+    <motion.img
+      src={hero}
+      alt=""
+      initial={{ x: -300, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 2, ease: "easeOut" }}
+      className={` h-full ${isArabic? 'scale-x-[-1]':'scale-x-[1]'}`}
+    />
   </div>
-<div className='order-1 sm:order-2 sm:w-[50%] relative flex sm:items-center sm:justify-center'>
-  <img
-    src={triangle}
-    alt=""
-    className="absolute top-0 left-0 hidden object-cover h-full z-1 sm:flex"
-  />
-  <img
-    src={hero}
-    alt=""
-    className="relative "
-  />
+
 </div>
-</div>
+
+
+
 <div className="w-full px-5 py-15">
   <div className="sm:px-[13rem] justify-center flex flex-col items-center gap-5">
-    <h1 className="text-center sm:text-[40px] text-[24px] font-[600]">Browse top category</h1>
+    <h1 className="text-center sm:text-[40px] text-[24px] font-[600]">{t('title')}</h1>
    <div className="grid grid-cols-2 gap-4 py-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
-    {categories.map((category, index) => (
-      <Category
-        key={index}
-        image={category.icon}
-        text1={category.title}
-        text2={category.articles}
-        bgcolor={category.color}
-        css="sm:flex-row items-center"
-      />
-    ))}
+   {categories.map((category, index) => (
+  <motion.div
+    key={index}
+    initial={{ scale: 0.8, opacity: 0 }}
+    whileInView={{ scale: 1, opacity: 1 }}
+    viewport={{ once: true, amount: 0.5 }}
+    transition={{ duration: 2, ease: "easeOut" }}
+  >
+    <Category
+      image={category.icon}
+      text1={category.title}
+      text2={category.articles}
+      bgcolor={category.color}
+      css="sm:flex-row items-center"
+    />
+  </motion.div>
+))}
   </div>
   <div className='flex flex-col items-center gap-5 sm:flex-row'>
     <p className='text-[#4E5566]'>We have more category & subcategory.</p>
@@ -213,12 +245,23 @@ const writer = [
 
       <div className='hidden grid-cols-5 gap-5 sm:grid'>
         {articles.map((article, index) => (
+              
+
+          <motion.div
+    key={index}
+    initial={index % 2 === 0 ? { y: -200, opacity: 0 } : { y: 200, opacity: 0 }}
+    whileInView={{ y: 0, opacity: 1 }}
+    viewport={{ once: true, amount: 0.7 }}
+    transition={{ duration: 2, ease: "easeOut" }}
+  >
           <LatestArticlCard
             key={index}
             color={article.color}
             text1={article.title}
             image={article.icon}
+      
           />
+          </motion.div>
         ))}
       </div>
 
@@ -316,6 +359,7 @@ const writer = [
       <Swiper
         spaceBetween={10}
         slidesPerView={1}
+        
             navigation={{
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
