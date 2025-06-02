@@ -1,10 +1,16 @@
 import React from 'react'
 import sally from '../assets/Saly-1.png'
 import { useState } from 'react'
-import { FaArrowRight, FaImage } from 'react-icons/fa'
+import { FaApple, FaArrowRight, FaFacebookF, FaGoogle, FaImage } from 'react-icons/fa'
+import { FaEye ,FaEyeSlash} from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 function CreateAccount() {
   const [img, setImg] = useState(null)
 const [fileName, setFileName] = useState("No file chosen");
+  const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]
@@ -71,31 +77,80 @@ const [fileName, setFileName] = useState("No file chosen");
           </div>
 
           <div className='flex flex-col w-full gap-5 sm:flex-row'>
-            <div className="flex flex-col w-full gap-2">
-              <label>Password</label>
-              <input type="password" placeholder="Create password" className="border border-[#E9EAF0] px-4 py-2 focus:outline-none" />
+             <div className='flex w-full gap-5'>
+          <div className="flex flex-col w-full gap-2">
+            <label>Password</label>
+            <div className='flex items-center border border-[#E9EAF0] px-4 py-2'>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Create password"
+                className="w-full focus:outline-none"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="ml-2 text-gray-500 focus:outline-none"
+              >
+                {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+              </button>
             </div>
-            <div className="flex flex-col w-full gap-2">
-              <label>Confirm Password</label>
-              <input type="password" placeholder="Confirm password" className="border border-[#E9EAF0] px-4 py-2 focus:outline-none" />
+          </div>
+        </div>
+          <div className='flex w-full gap-5'>
+          <div className="flex flex-col w-full gap-2">
+            <label>Confirm Password</label>
+            <div className='flex items-center border border-[#E9EAF0] px-4 py-2'>
+              <input
+                type={showConfirmPassword ? 'text' : 'password'}
+                placeholder="Create password"
+                className="w-full focus:outline-none"
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="ml-2 text-gray-500 focus:outline-none"
+              >
+                {showConfirmPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+              </button>
             </div>
+          </div>
+        </div>
           </div>
 
           <div className='flex flex-col justify-between gap-5 sm:flex-row'>
           <div className="flex items-center gap-2">
-            <input type="checkbox" className='' />
-            <label>I agree with all of your <span className="text-[#3F5BF6] underline">Terms & Conditions</span></label>
+            <input type="checkbox" id="agree" className='accent-[#FC5B3F] scale-150' />
+            <label htmlFor='agree'className='text-[#8C94A3]'>I agree with all of your <Link className="text-[#3F5BF6] underline">Terms & Conditions</Link></label>
           </div>
 
           <button type="submit" className="bg-[#FC5B3F] text-white w-fit py-2 px-6 flex items-center gap-2 font-semibold hover:bg-opacity-90">
             Create Account <FaArrowRight/>
           </button>
          </div>
-          <div className="mt-4 text-center">SIGN UP WITH</div>
-          <div className="flex justify-between gap-4">
-            <button className="border border-[#E9EAF0] py-2 px-6 w-full">Google</button>
-            <button className="border border-[#E9EAF0] py-2 px-6 w-full">Facebook</button>
-            <button className="border border-[#E9EAF0] py-2 px-6 w-full">Apple</button>
+<div className="flex items-center gap-4 my-4">
+  <hr className="flex-grow border-t border-gray-300" />
+  <span className="text-gray-500 ">SIGN UP WITH</span>
+  <hr className="flex-grow border-t border-gray-300" />
+</div> 
+         <div className="flex flex-col justify-between gap-4 sm:flex-row">
+                 <button className="border border-[#E9EAF0] py-2 cursor-pointer hover:border-[#f88484] w-full flex items-center gap-5 h-full group">
+           <div className='w-[30%] h-full items-center flex justify-center border-r group-hover:border-[#f88484] border-[#E9EAF0]'>
+           <FaGoogle />
+           </div>
+           Facebook
+          </button>
+           <button className="border border-[#E9EAF0] py-2 cursor-pointer hover:border-[#4267B2] w-full flex items-center gap-5 h-full group">
+             <div className='w-[30%] h-full items-center flex justify-center border-r group-hover:border-[#4267B2] border-[#E9EAF0]'>
+              <FaFacebookF />
+             </div>
+             Facebook
+            </button>
+           <button className="border border-[#E9EAF0] py-2 cursor-pointer hover:border-[#4267B2] w-full flex items-center gap-5 h-full group">
+             <div className='w-[30%] h-full items-center flex justify-center border-r group-hover:border-[#4267B2] border-[#E9EAF0]'>
+             <FaApple />
+           </div>
+            Facebook
+            </button>
           </div>
         </form>
       </div>

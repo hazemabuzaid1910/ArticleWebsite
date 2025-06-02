@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../assets/LOGO.svg';
+import { useLocation } from 'react-router-dom';
 function Navbar() {
    
+  const location = useLocation();
 
+  const isErrorPage = location.pathname === "/error";
+    const signIn = location.pathname === "/signin";
+    const createAccount = location.pathname === "/create-account";
    
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className='sticky top-0 z-50'>
-      <div className='bg-[#1D2026] text-white px-6  lg:px-20  lg:flex hidden justify-between items-center'>
+      {!(isErrorPage || signIn || createAccount) &&(<div className='bg-[#1D2026] text-white px-6  lg:px-20  lg:flex hidden justify-between items-center'>
         <ul className='hidden gap-4 lg:flex'>
           {[{page :"Home",path:"/"}, {page:'Articles',path:"/faqs"}, {page:'Vacancies',path:"/jobs"}, {page:'About Us',path:"/about"}, {page:'Contact',path:"/contact"}].map((item,index) => (
             <li key={index}>
@@ -30,7 +35,7 @@ function Navbar() {
         </ul>
 
       
-      </div>
+      </div>)}
 
      <div className='bg-[#FFFFFF] py-3 border-b-2 border-[#E9EAF0] px-6 lg:px-20 flex justify-between items-center'>
   <div className="flex items-center justify-between w-full lg:w-auto">
@@ -43,13 +48,15 @@ function Navbar() {
     </div>
   </div>
 
-  <div className='hidden gap-4 sm:flex'>
+  <div className='items-center hidden gap-4 sm:flex'>
+        {signIn&&<Link to="/create-account" className='text-[#4E5566]'>Don’t have account?</Link>}
+
     <Link to="/create-account" className='py-2 bg-[#FFEEE8] text-[#FF6636] px-5 font-bold hover:bg-[#FF6636] hover:text-white focus:bg-[#FF6636] focus:text-white transition duration-300'>
       Create Account
     </Link>
-    <Link to="/signin" className='py-2 bg-[#FF6636] hover:text-white hover:bg-[#FF6636] focus:bg-[#FF6636] focus:text-white text-white px-5 font-bold'>
+    {!signIn &&<Link to="/signin" className='py-2 bg-[#FF6636] hover:text-white hover:bg-[#FF6636] focus:bg-[#FF6636] focus:text-white text-white px-5 font-bold'>
       Sign In
-    </Link>
+    </Link> }
   </div>
 </div>
 
@@ -78,7 +85,7 @@ function Navbar() {
             <Link to="/create-account" className='block bg-[#FFEEE8] text-[#FF6636] px-4 py-2 font-bold rounded mb-2'>
               Create Account
             </Link>
-            <Link to="#" className='block bg-[#FF6636] text-white px-4 py-2 font-bold rounded'>
+           <Link to="/signin" className='block bg-[#FF6636] text-white px-4 py-2 font-bold rounded'>
               Sign In
             </Link>
           </li>

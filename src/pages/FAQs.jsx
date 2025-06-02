@@ -80,8 +80,8 @@ function FAQs() {
   };
 
   return (
-    <div>
-      <div className='bg-[#F5F7FA] flex justify-center items-center py-[2rem] gap-4 flex-col w-full'>
+    <div className=''>
+      <div className='bg-[#F5F7FA] flex   justify-center items-center py-[2rem] gap-4 flex-col w-full'>
         <h1 className='text-[#1D2026] text-[24px] font-[600]'>FAQs</h1>
         <div>
           <Link to="/" className="text-[#6E7485]"><span>Home /</span></Link>
@@ -89,8 +89,8 @@ function FAQs() {
         </div>
       </div>
 
-      <div className='px-[12rem] py-[5rem] flex flex-col sm:flex-row gap-8'>
-        <ul className='w-[400px] h-fit flex flex-col border border-[#E9EAF0]'>
+      <div className='sm:px-[12rem] sm:py-[5rem] flex flex-col sm:flex-row gap-8'>
+        <ul className='sm:w-[400px] h-fit flex flex-col border border-[#E9EAF0]'>
           {categories.map((category, index) => (
             <li key={index} className='border-b border-[#E9EAF0]'>
               <button
@@ -106,7 +106,7 @@ function FAQs() {
           ))}
         </ul>
 
-        <div className='w-[800px] flex flex-col gap-4'>
+        <div className='sm:w-[800px] flex flex-col gap-4'>
           {categories[activeCategoryIndex].faqs.map((item, index) => (
             <div key={index} className='border border-[#E9EAF0] rounded-md'>
               <button
