@@ -1,5 +1,4 @@
 import React from 'react'
-import Business from '../assets/Busniess.svg'
 function Category({image,text1,text2,bgcolor ,css}) {
   return (
     <div className='duration-400 hover:shadow-xl hover:scale-105 transation '>

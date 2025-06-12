@@ -1,3 +1,32 @@
 {
-    "title": "Browse top category"
+    "hero_title": "Learn with expert anytime anywhere",
+    "hero_description": "Our mission is to help people to find the best source online and learn with expert anytime, anywhere.",
+    "start_reading": "Start Reading",
+    "create_account": "Create Account",
+    "sign_in": "Sign in",
+    "vacancies": "Vacancies",
+    "about_us": "About Us",
+    "contact": "Contact US",
+    "categories_title": "Top Categories",
+    "more_categories": "We have more category & subcategory.",
+    "browse_all": "Browse All",
+    "latest_articles": "Latest Articles",
+    "our_opportunities": "Our Job Opportunities",
+    "category_label": "Label",
+    "category_business": "Business",
+    "category_finance": "Finance & Accounting",
+    "category_it": "IT & Software",
+    "category_development": "Personal Development",
+    "category_productivity": "Office Productivity",
+    "category_marketing": "Marketing",
+    "category_photo": "Photography & Video",
+    "articles_count": "{{count}} Articles",
+    "course_it": "IT & Software",
+    "course_marketing": "Marketing",
+    "course_design": "DESIGN",
+    "course_dev": "Developments",
+    "course_business": "Business",
+    "footer_statement": "Start writing with 7.2k users around",
+    "the_world": " the world ."
+
 }

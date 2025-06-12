@@ -8,3 +8,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+* {
+    transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out, border-color 0.8s ease-in-out, fill 0.8s ease-in-out, /* لرموز SVG */
+    stroke 0.8s ease-in-out;
+}

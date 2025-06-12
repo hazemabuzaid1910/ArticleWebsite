@@ -1,9 +1,9 @@
-import React from "react";
-import logo from "../assets/LOGO2.svg";
+import React  from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   FaArrowDown,
+  FaArrowLeft,
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
@@ -12,10 +12,9 @@ import {
 } from "react-icons/fa";
 import { FaArrowRight, FaApple, FaGooglePlay } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
-import '../i18n'
+import i18n from '../i18n'
 const Footer = () => {
-    const [t,i18n]=useTranslation()
-    
+const { t, i18n } = useTranslation();
   const handleChange = (e) => {
     if(e.target.value==='ar'){
       document.body.style.direction= 'rtl'
@@ -27,12 +26,12 @@ const Footer = () => {
   };
   
   return (
-    <footer className="bg-[#1D2026]">
+    <footer className="bg-[var(--primary-bg)]">
       <div className="flex flex-col items-center justify-between gap-5 px-5 py-20 sm:px-40 sm:flex-row">
         <div className="sm:w-[600px] w-full">
           <h1 className="relative text-2xl font-bold text-center text-white sm:text-4xl sm:text-start ">
-            Start writing with 7.2k users around{" "}
-            <span className="text-[#FF6636] ">the world</span> .
+          { t("footer_statement")}
+            <span className="text-[var(--orange-color)] ">{t("the_world")}</span> 
           </h1>
         </div>
         <div className="flex sm:gap-[100px] gap-10">
@@ -54,7 +53,7 @@ const Footer = () => {
       <div className="flex flex-col items-center justify-between gap-5 px-5 py-10 sm:flex-row sm:px-40">
         <div className="flex flex-col items-center gap-4 sm:items-start w-90">
           <Link to="#">
-            <img src={logo} alt="logo" />
+            <img src="/LOGO2.svg" alt="logo" />
           </Link>
           <p className="text-[#8C94A3] sm:text-start text-center">
             Aliquam rhoncus ligula est, non pulvinar elit convallis nec. Donec
@@ -63,33 +62,33 @@ const Footer = () => {
           <ul className="flex gap-4">
             <li>
               <Link to="#" className="">
-                <FaFacebookF className="text-4xl p-2 bg-[#363B4766] text-white hover:bg-[#FF6636] transetion duration-300 " />
+                <FaFacebookF className="text-4xl p-2 bg-[#363B4766] text-white hover:bg-[var(--orange-color)] transetion duration-300 " />
               </Link>
             </li>
             <li>
               <Link to="#" className="">
-                <FaInstagram className="text-4xl p-2 bg-[#363B4766] text-white hover:bg-[#FF6636] transetion duration-300 " />
+                <FaInstagram className="text-4xl p-2 bg-[#363B4766] text-white hover:bg-[var(--orange-color)] transetion duration-300 " />
               </Link>
             </li>
             <li>
               <Link to="#" className="">
-                <FaLinkedinIn className="text-4xl p-2 bg-[#363B4766] text-white hover:bg-[#FF6636] transetion duration-300 " />
+                <FaLinkedinIn className="text-4xl p-2 bg-[#363B4766] text-white hover:bg-[var(--orange-color)] transetion duration-300 " />
               </Link>
             </li>
             <li>
               <Link to="#" className="">
-                <FaTwitter className="text-4xl p-2 bg-[#363B4766] text-white hover:bg-[#FF6636] transetion duration-300 " />
+                <FaTwitter className="text-4xl p-2 bg-[#363B4766] text-white hover:bg-[var(--orange-color)] transetion duration-300 " />
               </Link>
             </li>
             <li>
               <Link to="#" className="">
-                <FaYoutube className="text-4xl p-2 bg-[#363B4766] text-white hover:bg-[#FF6636] transetion duration-300 " />
+                <FaYoutube className="text-4xl p-2 bg-[#363B4766] text-white hover:bg-[var(--orange-color)] transetion duration-300 " />
               </Link>
             </li>
           </ul>
           <div></div>
         </div>
-        <div className="flex flex-col text-center gap-15 sm:text-start sm:flex-row">
+        <div className="flex flex-col gap-5 text-center sm:text-start sm:flex-row">
           <ul className="flex flex-col items-center w-40 sm:items-start">
             <h1 className="text-white font-bold text-[18px] mb-4">
               Top 4 Category
@@ -103,15 +102,15 @@ const Footer = () => {
             <h1 className="text-white font-bold text-[18px] mb-4">
               Quick Links
             </h1>
-            <FooterItem name="Development" />
-            <FooterItem name="Finance & Accounting" />
-            <FooterItem name="Design" />
-            <FooterItem name="Business" />
+            <FooterItem name="About" />
+            <FooterItem name="Become an author" />
+            <FooterItem name="Contact" />
+            <FooterItem name="Career" />
           </ul>
           <ul className="flex flex-col items-center w-40 sm:items-start">
             <h1 className="text-white font-bold text-[18px] mb-4">Support</h1>
-            <FooterItem name="Development" />
-            <FooterItem name="Finance & Accounting" />
+            <FooterItem name="Help Center" />
+            <FooterItem name="FAQs" />
             <FooterItem name="Design" />
             <FooterItem name="Business" />
           </ul>
@@ -122,7 +121,7 @@ const Footer = () => {
           </h1>
           <Link
             to="#"
-            className="flex text-white items-center gap-2 bg-[#363B4766] py-1 justify-center hover:bg-[#FF6636] transition duration-300"
+            className="flex text-white items-center gap-2 bg-[#363B4766] py-1 justify-center hover:bg-[var(--orange-color)] transition duration-300"
           >
             <FaApple className="text-[50px]" />
 
@@ -133,7 +132,7 @@ const Footer = () => {
           </Link>
           <Link
             to="#"
-            className="flex text-white items-center gap-2 bg-[#363B4766] py-2 justify-center hover:bg-[#FF6636] transition duration-300"
+            className="flex text-white items-center gap-2 bg-[#363B4766] py-2 justify-center hover:bg-[var(--orange-color)] transition duration-300"
           >
             <FaGooglePlay className="text-[50px]" />
 
@@ -145,9 +144,9 @@ const Footer = () => {
         </div>
       </div>
       <hr className="text-[#363B4780]" />
-      <div className="flex justify-between py-4 text-center sm:px-[10rem]">
-        <p className="text-[#8C94A3]">© 2025 - All rights reserved</p>
-      <div className="relative inline-block w-48">
+      <div className="flex justify-between py-4 text-center flex-col items-center gap-5  sm:flex-row sm:px-[10rem]">
+        <p className="text-[#8C94A3] sm:order-1 order-2">© 2025 - All rights reserved</p>
+      <div className="relative order-1 inline-block w-48 sm:order-2">
   <select
      onChange={handleChange}
    defaultValue={i18n.language}
@@ -170,14 +169,20 @@ const Footer = () => {
 
 export default Footer;
 
-const FooterItem = ({ name }) => (
+const FooterItem = ({ name }) => {
+    let isArabic=false
+    if(i18n.language==="ar"){
+      
+      isArabic=true;
+    }
+  return(
   <li className="sm:w-full group">
     <Link
       to="#"
-      className="flex items-center w-full justify-between text-[#8C94A3] border-b-2 border-transparent hover:border-[#FF6636] transition duration-300 py-2"
+      className="flex items-center w-full justify-between text-[#8C94A3] border-b-2 border-transparent hover:border-[var(--orange-color)] transition duration-300 py-2"
     >
       <span className="text-[14px]">{name}</span>
-      <FaArrowRight className="hidden transition duration-200 group-hover:flex" />
+      {isArabic ?<FaArrowLeft className="hidden transition duration-200 group-hover:flex" />:<FaArrowRight className="hidden transition duration-200 group-hover:flex" />}
     </Link>
   </li>
-);
+)};

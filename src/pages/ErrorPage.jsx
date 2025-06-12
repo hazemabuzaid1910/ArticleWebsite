@@ -1,5 +1,4 @@
 import React from 'react'
-import error from '../assets/eroor.png'
 import { Link } from 'react-router-dom'
 function ErrorPage() {
   return (
@@ -21,7 +20,7 @@ function ErrorPage() {
           </Link>                    </div>
                     </div>
                     <div className='order-1 w-full h-full sm:order-2'>
-                         <img src={error} alt="" />
+                         <img src="/eroor.png" alt="" />
                     </div>
                    
                 </div>

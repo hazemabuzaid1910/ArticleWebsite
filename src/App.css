@@ -6,6 +6,43 @@ body,
     padding: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+    transition: background-color 2s ease-in-out, color 2s ease-in-out;
+    -webkit-transition: background-color 2s ease-in-out, color 2s ease-in-out;
+    -moz-transition: background-color 2s ease-in-out, color 2s ease-in-out;
+    -ms-transition: background-color 2s ease-in-out, color 2s ease-in-out;
+    -o-transition: background-color 2s ease-in-out, color 2s ease-in-out;
+}
+
+:root {
+    --main-bg: #FFFFFF;
+    --primary-color: #1D2026;
+    --primary-bg: #1D2026;
+    --orange-color: #FF6636;
+    --secondary-color: #F5F7FA;
+    --p-color: #4E5566;
+    --primary-padding: 10rem;
+    --create-account-image: #EBEBFF;
+    --card-bg: #FFFFFF;
+}
+
+body.light {
+    background-color: #ffffff;
+    color: #1D2026;
+}
+
+.dark {
+    background-color: #22225d;
+    --orange-bg: #FF6636;
+    --primary-color: #ffffff;
+    --secondary-color: #09094a;
+    --primary-bg: #29303f;
+    --primary-padding: 10rem;
+    --main-bg: #22225d;
+    --create-account-image: #1c1c4a;
+    --p-color: #7c8294;
+    --card-bg: #2e2e6d;
 }
 
 .swiper-pagination-bullet {
@@ -99,4 +136,21 @@ body,
 
 .animate-marquee {
     animation: marquee 20s linear infinite;
+}
+
+.clip-diagonal-ltr {
+    clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.clip-diagonal-rtl {
+    clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 0% 100%);
+}
+
+@media (max-width: 640px) {
+    .clip-diagonal-ltr {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .clip-diagonal-rtl {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
 }

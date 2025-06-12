@@ -1,6 +1,5 @@
 import React from 'react'
 import { FaArrowRight, FaImage } from 'react-icons/fa'
-import img from '../assets/Illustrations.png'
 import { FaEye ,FaEyeSlash} from 'react-icons/fa'
 import { FaApple, FaFacebookF, FaGoogle } from 'react-icons/fa'
 
@@ -9,12 +8,12 @@ function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className='flex flex-col items-center justify-center h-full gap-10 sm:flex-row'>
-      <div className='bg-[#6161c7] flex  items-center justify-center  sm:w-[50%] '>
-        <img src={img} alt="Saly Illustration" className="w-full h-full" />
+    <div className='flex flex-col gap-10 sm:flex-row'>
+      <div className='bg-[#6161c7] flex  items-center sticky justify-center  sm:w-[50%] '>
+        <img src="/Illustrations.png" alt="Saly Illustration" className="w-full " />
       </div>
 
-      <div className='flex flex-col p-10 sm:w-1/2 sm:px-[5rem] gap-5 sm:py-[2rem]'>
+      <div className='flex flex-col p-10 sm:w-1/2 sm:px-[5rem] gap-5 sm:py-[5rem]'>
         <h1 className='text-[40px] font-[600] text-[#1D2026] text-center'>Sign in to your account</h1>
 
         <form className="flex flex-col gap-5">

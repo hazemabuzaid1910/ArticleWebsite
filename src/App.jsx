@@ -16,6 +16,8 @@ import FooterError from "./components/FooterError";
 import FAQs from "./pages/FAQs";
 import CreateAccount from "./pages/CreateAccount";
 import SignIn from "./pages/SignIn";
+import { useState } from "react";
+import { useEffect } from "react";
 function App() {
   const location = useLocation();
 
@@ -23,11 +25,14 @@ function App() {
     const signIn = location.pathname === "/signin";
     const createAccount = location.pathname === "/create-account";
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-
+  useEffect(() => {
+    document.body.className = isDarkMode ? "dark" : "light";
+  }, [isDarkMode]);
   return (
     <div>
-      <Navbar />
+      <Navbar toggleDarkMode={() => setIsDarkMode(!isDarkMode)} isDarkMode={isDarkMode} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

@@ -1,5 +1,4 @@
 import React from 'react'
-import sally from '../assets/Saly-1.png'
 import { useState } from 'react'
 import { FaApple, FaArrowRight, FaFacebookF, FaGoogle, FaImage } from 'react-icons/fa'
 import { FaEye ,FaEyeSlash} from 'react-icons/fa'
@@ -22,11 +21,11 @@ const [fileName, setFileName] = useState("No file chosen");
   }
   return (
     <div className='flex flex-col h-full gap-10 sm:flex-row'>
-      <div className='bg-[#EBEBFF] flex items-center justify-center sm:w-[45%]'>
-        <img src={sally} alt="Saly Illustration" className="w-full" />
-      </div>
+      <div className="bg-[var(--create-account-image)] sm:w-[45%] hidden sm:flex items-center justify-center sticky top-0 h-screen">
+  <img src="/Saly-1.png" alt="Saly Illustration" className="object-cover w-full h-full " />
+</div>
 
-      <div className='flex flex-col sm:w-1/2 sm:px-[5rem] gap-5 sm:py-[2rem]'>
+      <div className='flex flex-col sm:w-1/2 sm:px-[3rem] gap-5  sm:py-[2rem]'>
         <h1 className='text-[40px] font-[600] text-[#1D2026] text-center'>Create your account</h1>
 
         <form className="flex flex-col gap-5 p-5">
