@@ -36,7 +36,7 @@ function ContactUS() {
           </Link>
         </div>
         <div className="order-1 w-full sm:order-2">
-          <img src="/public/Fit.png" alt="Gallery 1" className="w-full h-full" />
+          <img src="/Fit.png" alt="Gallery 1" className="w-full h-full" />
         </div>
       </div>
       <div className="sm:px-[var(--primary-padding)] h-full py-[5rem] flex flex-col gap-10">
