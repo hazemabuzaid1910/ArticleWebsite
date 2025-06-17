@@ -15,6 +15,9 @@ import { IoIosArrowDown } from "react-icons/io";
 import i18n from '../i18n'
 const Footer = () => {
 const { t, i18n } = useTranslation();
+
+  const currentLang = i18n.language || localStorage.getItem("i18nextLng") || "en";
+  document.body.style.direction = currentLang === "ar" ? "rtl" : "ltr";
   const handleChange = (e) => {
     if(e.target.value==='ar'){
       document.body.style.direction= 'rtl'
@@ -23,6 +26,8 @@ const { t, i18n } = useTranslation();
       document.body.style.direction= 'ltr'
     }
     i18n.changeLanguage(e.target.value);
+      localStorage.setItem('i18nextLng', e.target.value); // <-- حفظ اللغة
+
   };
   
   return (

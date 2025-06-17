@@ -25,6 +25,8 @@ body,
     --primary-padding: 10rem;
     --create-account-image: #EBEBFF;
     --card-bg: #FFFFFF;
+    --text-font-lg: 600;
+    --text-font-md: 400;
 }
 
 body.light {
@@ -41,7 +43,7 @@ body.light {
     --primary-padding: 10rem;
     --main-bg: #22225d;
     --create-account-image: #1c1c4a;
-    --p-color: #7c8294;
+    --p-color: #9a9fad;
     --card-bg: #2e2e6d;
 }
 
@@ -126,16 +128,12 @@ body.light {
     }
     100% {
         transform: translateX(-50%);
-        -webkit-transform: translateX(-50%);
-        -moz-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
     }
-    /* يتحرك إلى اليسار */
 }
 
 .animate-marquee {
     animation: marquee 20s linear infinite;
+    white-space: nowrap;
 }
 
 .clip-diagonal-ltr {

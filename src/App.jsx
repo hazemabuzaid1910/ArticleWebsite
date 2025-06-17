@@ -5,7 +5,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import Footer from "./components/Footer";
 import "./App.css";
 import About from "./pages/About";
@@ -18,6 +18,7 @@ import CreateAccount from "./pages/CreateAccount";
 import SignIn from "./pages/SignIn";
 import { useState } from "react";
 import { useEffect } from "react";
+import MyAccount from "./pages/MyAccount";
 function App() {
   const location = useLocation();
 
@@ -42,6 +43,8 @@ function App() {
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/signin" element={<SignIn />} />
+                <Route path="/myaccount" element={<MyAccount />} />
+
       </Routes>
 
 {!(isErrorPage || signIn || createAccount) ? <Footer /> : isErrorPage ? <FooterError /> : null}

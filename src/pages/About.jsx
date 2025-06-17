@@ -1,42 +1,52 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { PiCheckBold, PiNotebookBold } from "react-icons/pi";
+import {PiNotebookBold } from "react-icons/pi";
 import { PiGlobeHemisphereWestLight } from "react-icons/pi";
 import { RiStackLine } from "react-icons/ri";
 import { LuCircleCheckBig } from "react-icons/lu";
 import { PiUsersLight } from "react-icons/pi";
 import OurCompanies from '../components/OurCompanies';
 import { FaArrowRight } from 'react-icons/fa';
-
+import BreadCrumb from '../components/BreadCrumb';
 import Comment from '../components/Comment';
+import Data from '../data'
+import Companies from "./sections/Companies";
 
 function About() {
-    const images = [
-      {img:"/Google.png"},
-     { img:"/youtube.png"},
-      {img:"/AMG.CO.png"},
-      {img:"/Lenovo.png"},
-      {img:"/salk.png"},
-      {img:"/Virason.png"},
-      {img:"/LexMark.png"},
-     { img:"/microsoft.png"}
-    ];
-   const image=[
-    {img1: "/img1.png"},
-    {img1: "/img2.png"},
-    {img1: "/img3.png"},
-    {img1: "/img4.png"},
+  const data=new Data();
+  const statsData = [
+  {
+    icon: <PiUsersLight size={40} color="#FF6636" />,
+    text1: "67.1K",
+    text2: "Students",
+  },
+  {
+    icon: <PiNotebookBold size={40} color="#564FFD" />,
+    text1: "26K",
+    text2: "Certified Instructor",
+  },
+  {
+    icon: <LuCircleCheckBig size={40} color="#23BD33" />,
+    text1: "72K",
+    text2: "Country Language",
+  },
+  {
+    icon: <PiGlobeHemisphereWestLight size={40} color="#E34444" />,
+    text1: "99%",
+    text2: "Success Rate",
+  },
+  {
+    icon: <RiStackLine size={40} color="#FD8E1F" />,
+    text1: "57K",
+    text2: "Trusted Companies",
+  },
+];
+  const repeatedStats = [...statsData, ...statsData]; 
 
-   ]
   return (
     <div>
-        <div className='bg-[var(--secondary-color)] flex justify-center items-center py-[2rem] gap-4 flex-col w-full'>
-         <h1 className='text-[var(--primary-color)] text-[24px] font-[600]'>About</h1>
-         <div>
-           <Link to="/" className="text-[var(--p-color)]"><span>Home /</span></Link> 
-            <span className='text-[var(--primary-color)]'> About</span>
-         </div>
-        </div>
+           <BreadCrumb name_page="About"/> 
+
         <div className='flex items-center sm:gap-20 gap-5 sm:flex-row flex-col sm:px-[var(--primary-padding)] px-5 py-5 sm:py-[5rem] w-full justify-between'>
             <div className='order-2 w-full sm:order-1'>
             <div className='flex flex-col justify-center gap-10 '>
@@ -52,41 +62,30 @@ function About() {
             </div>
            
         </div>
-        <div className='sm:px-[var(--primary-padding)] px-5 border-t-1 border-[#E9EAF0]'>
-            <div>
-                <div className='flex sm:flex-row flex-col gap-10 items-center  sm:py-[5rem] py-10'>
-  <div className='flex flex-col gap-2 text-center sm:text-start'>
-    <h1 className='text-[var(--primary-color)] sm:text-[32px]  text-[24px] font-[600]'>6.3k trusted companies</h1>
-    <p className='text-[var(--p-color)]'>
-      Nullam egestas tellus at enim ornare tristique. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
-    </p>
-  </div>
-  <div className='grid w-full grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4'>
-    {images.map((image, index) => (
-      <OurCompanies key={index} image={image.img} />
-    ))}
-  </div>
-</div>
-            </div>
-         <div className="w-full py-4 overflow-hidden bg-[var(--main-bg)]">
-  <div className="flex gap-10 animate-marquee w-max">
-    <Statistics icon={<PiUsersLight size={40} color='#FF6636' />} text1="67.1K" text2="Students" />
-    <Statistics icon={<PiNotebookBold size={40} color='#564FFD' />} text1="26K" text2="Certified Instructor" />
-    <Statistics icon={<LuCircleCheckBig size={40} color='#23BD33' />} text1="72K" text2="Country Language" />
-    <Statistics icon={<PiGlobeHemisphereWestLight size={40} color='#E34444' />} text1="99%" text2="Success Rate" />
-    <Statistics icon={<RiStackLine size={40} color='#FD8E1F' />} text1="57K" text2="Trusted Companies" />
-    {/* كرر العناصر لتأثير التمرير اللانهائي */}
-        <Statistics icon={<PiUsersLight size={40} color='#FF6636' />} text1="67.1K" text2="Students" />
-    <Statistics icon={<PiNotebookBold size={40} color='#564FFD' />} text1="26K" text2="Certified Instructor" />
-    <Statistics icon={<LuCircleCheckBig size={40} color='#23BD33' />} text1="72K" text2="Country Language" />
-    <Statistics icon={<PiGlobeHemisphereWestLight size={40} color='#E34444' />} text1="99%" text2="Success Rate" />
-    <Statistics icon={<RiStackLine size={40} color='#FD8E1F' />} text1="57K" text2="Trusted Companies" />
-
+            <Companies/>
+<div className="w-full py-4 bg-[var(--main-bg)] overflow-x-hidden">
+  <div className="px-5 sm:px-[var(--primary-padding)]">
+    <div className="w-full overflow-hidden">
+      <div className="flex w-full gap-10 animate-marquee">
+        {[...repeatedStats, ...repeatedStats].map((stat, index) => (
+          <Statistics
+            key={index}
+            icon={stat.icon}
+            text1={stat.text1}
+            text2={stat.text2}
+          />
+        ))}
+      </div>
+    </div>
   </div>
 </div>
 
-        </div>
-        <div className='bg-[#FFEEE8] flex flex-col sm:flex-row items-center sm:px-[10rem] gap-10 mt-[5rem] '>
+
+
+
+
+        
+        <div className='bg-[#FFEEE8]  flex flex-col sm:flex-row items-center sm:px-[10rem] gap-10 mt-[5rem] '>
             <div className='w-full h-full '>
                 <img src="/two-business-partners-working-office 1.svg" alt="" className='w-full h-full '/>
             </div>
@@ -156,7 +155,7 @@ function About() {
     />
 
     <div className="flex flex-wrap justify-center gap-2 sm:hidden">
-      {image.map((img, i) => (
+      {data.image.map((img, i) => (
         <img key={i} src={img} alt={`Gallery ${i + 1}`} className="w-[9rem] h-[6rem] object-cover  shadow" />
       ))}
     </div>
@@ -164,12 +163,17 @@ function About() {
 </div>
 
         </div>
-        <div className='flex flex-col sm:flex-row px-5  sm:px-[var(--primary-padding)] py-[5rem] gap-5'>
-          <Comment name="Sundar Pichai" text1="Eduguard fit us like a glove. Their team curates fresh, up-to-date courses from their marketplace and makes them available to customers." comp="Google" desc="Chief Chairman of "/>
-          <Comment name="Sundar Pichai" text1="Eduguard fit us like a glove. Their team curates fresh, up-to-date courses from their marketplace and makes them available to customers." comp="Google" desc="Chief Chairman of "/>
-          <Comment name="Sundar Pichai" text1="Eduguard fit us like a glove. Their team curates fresh, up-to-date courses from their marketplace and makes them available to customers." comp="Google" desc="Chief Chairman of "/>
-
-        </div>
+    <div className="flex flex-col sm:flex-row px-5 sm:px-[var(--primary-padding)] py-[5rem] gap-5">
+      {[1,2,3].map((item, index) => (
+        <Comment
+          key={index}
+          name= "Sundar Pichai"
+          text1="Eduguard fit us like a glove. Their team curates fresh, up-to-date courses from their marketplace and makes them available to customers."
+          comp="Google"
+          desc="Chief Chairman of "
+        />
+      ))}
+    </div>
     </div>
   )
 }

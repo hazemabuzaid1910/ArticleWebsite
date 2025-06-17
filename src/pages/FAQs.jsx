@@ -1,77 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
-
-// بيانات منظمة حسب الفئات
-const categories = [
-  {
-    title: "General Questions",
-    faqs: [
-      {
-        question: "Nulla tempor odio ut fringilla",
-        answer: "Proin quis elementum velit, eget efficitur nulla..."
-      },
-      {
-        question: "Donec malesuada",
-        answer: "Lorem ipsum dolor, sit amet consectetur adipisicing elit..."
-      }
-    ]
-  },
-    {
-    title: "Quisque ",
-    faqs: [
-      {
-        question: "Ut ullamcorper est sit amet quam aliquet mattis.",
-        answer: "Proin quis elementum velit, eget efficitur nulla..."
-      },
-      {
-        question: "Donec malesuada",
-        answer: "Lorem ipsum dolor, sit amet consectetur adipisicing elit..."
-      }
-    ]
-  },
-   {
-    title: "Donec malesuada ",
-    faqs: [
-      {
-        question: "Vestibulum pellentesque ex magna.",
-        answer: "Proin lacinia lobortis metus, ut faucibus eros ullamcorper et."
-      },
-      {
-        question: "Donec malesuada",
-        answer: "Lorem ipsum dolor, sit amet consectetur adipisicing elit..."
-      }
-    ]
-  },
-      {
-    title: "Etiam eu libero elementum ",
-    faqs: [
-      {
-        question: "Nulla tempor odio ut fringilla",
-        answer: "Proin quis elementum velit, eget efficitur nulla..."
-      },
-      {
-        question: "Donec malesuada",
-        answer: "Lorem ipsum dolor, sit amet consectetur adipisicing elit..."
-      }
-    ]
-  },
-  {
-    title: "Technical Support",
-    faqs: [
-      {
-        question: "Quisque",
-        answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit..."
-      },
-      {
-        question: "Toquam, in accumsan",
-        answer: "Lorem ipsum dolor, sit amet consectetur adipisicing elit..."
-      }
-    ]
-  }
-];
+import Data from "../data";
+import BreadCrumb from '../components/BreadCrumb';
 
 function FAQs() {
+const data =new Data;
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0); 
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null); 
 
@@ -81,17 +15,12 @@ function FAQs() {
 
   return (
     <div className=''>
-      <div className='bg-[var(--secondary-color)] flex   justify-center items-center py-[2rem] gap-4 flex-col w-full'>
-        <h1 className='text-[var(--primary-color)] text-[24px] font-[600]'>FAQs</h1>
-        <div>
-          <Link to="/" className="text-[var(--p-color)]"><span>Home /</span></Link>
-          <span className='text-[var(--primary-color)]'> FAQs</span>
-        </div>
-      </div>
+        <BreadCrumb name_page="FAQs"/> 
+
 
       <div className='sm:px-[12rem] sm:py-[5rem] flex flex-col sm:flex-row gap-8'>
         <ul className='sm:w-[400px] h-fit flex flex-col border border-[#E9EAF0]'>
-          {categories.map((category, index) => (
+          {data.Category.map((category, index) => (
             <li key={index} className='border-b border-[#E9EAF0]'>
               <button
                 className={`w-full text-left px-4 py-3 text-[var(--primary-color)] hover:bg-[#FF6636] hover:text-white transition-all duration-200 ${activeCategoryIndex === index ? "bg-[#FF6636] text-white" : ""}`}
@@ -107,7 +36,7 @@ function FAQs() {
         </ul>
 
         <div className='sm:w-[800px] flex flex-col gap-4'>
-          {categories[activeCategoryIndex].faqs.map((item, index) => (
+          {data.Category[activeCategoryIndex].faqs.map((item, index) => (
             <div key={index} className='border border-[#E9EAF0] rounded-md'>
               <button
                 onClick={() => toggleQuestion(index)}
