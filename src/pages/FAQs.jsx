@@ -14,19 +14,24 @@ const data =new Data;
   };
 
   return (
-    <div className=''>
+    <div className='grid grid-cols-12 gap-5 pb-5'>
+      <div className='col-span-12'>
         <BreadCrumb name_page="FAQs"/> 
+      </div>
+        
+<h1 className='col-span-10 col-start-2 py-10 font-[600] text-center text-[var(--primary-color)] text-[28px] lg:text-[40px]'>Frequently asked questions</h1>
 
-
-      <div className='sm:px-[12rem] sm:py-[5rem] flex flex-col sm:flex-row gap-8'>
-        <ul className='sm:w-[400px] h-fit flex flex-col border border-[#E9EAF0]'>
+      <div className='col-span-12 gap-8 lg:col-span-2 lg:col-start-2 '>
+        <ul className=' whitespace-nowrap lg:whitespace-normal  h-fit flex lg:flex-col lg:gap-0 gap-5 lg:overflow-x-hidden overflow-x-auto lg:border border-b-2  border-[#E9EAF0]'>
           {data.Category.map((category, index) => (
-            <li key={index} className='border-b border-[#E9EAF0]'>
+            <li key={index} className='lg:border-b border-[#E9EAF0]'>
               <button
                 className={`w-full text-left px-4 py-3 text-[var(--primary-color)] hover:bg-[#FF6636] hover:text-white transition-all duration-200 ${activeCategoryIndex === index ? "bg-[#FF6636] text-white" : ""}`}
                 onClick={() => {
                   setActiveCategoryIndex(index);
-                  setActiveQuestionIndex(null); 
+                  setActiveQuestionIndex(null);
+
+                  
                 }}
               >
                 {category.title}
@@ -34,8 +39,9 @@ const data =new Data;
             </li>
           ))}
         </ul>
+    </div>
 
-        <div className='sm:w-[800px] flex flex-col gap-4'>
+        <div className='flex flex-col col-span-10 col-start-2 gap-4 lg:col-span-5 lg:col-start-4 '>
           {data.Category[activeCategoryIndex].faqs.map((item, index) => (
             <div key={index} className='border border-[#E9EAF0] rounded-md'>
               <button
@@ -55,7 +61,7 @@ const data =new Data;
             </div>
           ))}
         </div>
-     <div className='flex flex-col bg-[var(--secondary-color)] p-5 '>
+     <div className='flex flex-col col-span-10 col-start-2 lg:col-span-3 lg:col-start-9 bg-[var(--secondary-color)] p-5 '>
         <h1 className='text-[var(--primary-color)] text-[18px] font-[500]'>Didn’t find your answer?</h1>
         <p className='text-[var(--p-color)] text-[12px] font-[400]'>
           Don’t worry, write your question here and our support team will help you.
@@ -67,7 +73,6 @@ const data =new Data;
         </form>
       </div>
       </div>
-    </div>
   );
 }
 

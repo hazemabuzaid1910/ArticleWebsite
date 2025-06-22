@@ -9,12 +9,15 @@ import {
 } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 function CreateAccount() {
   const [img, setImg] = useState(null);
   const [fileName, setFileName] = useState("No file chosen");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
+  const {i18n}=useTranslation();
+    const isArabic = i18n.language === "ar";
+ console.log("isArabic",isArabic)
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -23,21 +26,25 @@ function CreateAccount() {
     }
   };
   return (
-    <div className="flex flex-col h-full gap-10 sm:flex-row">
-      <div className="bg-[var(--create-account-image)] sm:w-[45%] hidden sm:flex   sticky top-0 h-screen">
-        <img
-          src="/Saly-1.png"
-          alt="Saly-10 Illustration"
-          className="object-cover w-full "
-        />
-      </div>
+<div className="grid grid-cols-12">
+  <div className="col-span-12 lg:col-span-6">
+    <div className={`lg:fixed top-0 ${isArabic ? "right-0":"left-0"} relative  lg:h-screen  bg-[var(--create-account-image)]`}>
+      <img
+        src="/Saly-1.png"
+        alt="Saly-10 Illustration"
+        className="object-cover w-full h-full lg:flex"
+      />
+     <div className="absolute inset-0 z-0 bg-black opacity-30 lg:hidden"></div>
 
-      <div className="flex flex-col sm:w-1/2 sm:px-[3rem] gap-5  sm:py-[2rem]">
-        <h1 className="text-[40px] font-[600] text-[var(--primary-color)] text-center">
-          Create your account
-        </h1>
+    </div>
+  </div>
 
-        <form className="flex flex-col gap-5 p-5">
+  <div className="left-0 right-0 z-10 col-span-12 p-10 lg:static lg:col-span-6">
+ 
+   <h1 className="absolute inset-y-[50%] left-0 right-0 lg:static text-[40px] font-[600] text-white lg:text-[var(--primary-color)] text-center">
+      Create your account
+    </h1>
+    <form className="flex flex-col gap-5 mt-5">
           <div className="flex flex-col w-full gap-5 sm:flex-row">
             <div className="flex flex-col w-full gap-2">
               <label className="text-[var(--primary-color)]">First Name</label>
@@ -214,7 +221,7 @@ function CreateAccount() {
             </button>
           </div>
         </form>
-      </div>
+    </div>
     </div>
   );
 }

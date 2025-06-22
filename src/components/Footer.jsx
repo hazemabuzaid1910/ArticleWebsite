@@ -12,27 +12,21 @@ import {
 } from "react-icons/fa";
 import { FaArrowRight, FaApple, FaGooglePlay } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
-import i18n from '../i18n'
 const Footer = () => {
 const { t, i18n } = useTranslation();
 
   const currentLang = i18n.language || localStorage.getItem("i18nextLng") || "en";
   document.body.style.direction = currentLang === "ar" ? "rtl" : "ltr";
   const handleChange = (e) => {
-    if(e.target.value==='ar'){
-      document.body.style.direction= 'rtl'
-    } 
-    else {
-      document.body.style.direction= 'ltr'
-    }
+
     i18n.changeLanguage(e.target.value);
-      localStorage.setItem('i18nextLng', e.target.value); // <-- حفظ اللغة
+      localStorage.setItem('i18nextLng', e.target.value); 
 
   };
   
   return (
     <footer className="bg-[var(--primary-bg)]">
-      <div className="flex flex-col items-center justify-between gap-5 px-5 py-20 sm:px-40 sm:flex-row">
+      <div className="flex flex-col items-center justify-between gap-5 px-5 py-20 lg:flex-row sm:px-40">
         <div className="sm:w-[600px] w-full">
           <h1 className="relative text-2xl font-bold text-center text-white sm:text-4xl sm:text-start ">
           { t("footer_statement")}
@@ -55,7 +49,7 @@ const { t, i18n } = useTranslation();
         </div>
       </div>
       <hr className="text-[#363B4780]" />
-      <div className="flex flex-col items-center justify-between gap-5 px-5 py-10 sm:flex-row sm:px-40">
+      <div className="flex flex-col items-center justify-between gap-5 px-5 py-10 lg:flex-row sm:px-40">
         <div className="flex flex-col items-center gap-4 sm:items-start w-90">
           <Link to="#">
             <img src="/LOGO2.svg" alt="logo" />
@@ -126,9 +120,9 @@ const { t, i18n } = useTranslation();
           </h1>
           <Link
             to="#"
-            className="flex text-white items-center gap-2 bg-[#363B4766] py-1 justify-center hover:bg-[var(--orange-color)] transition duration-300"
+            className="flex text-white items-center gap-4 bg-[#363B4766] py-2 justify-center hover:bg-[var(--orange-color)] transition duration-300"
           >
-            <FaApple className="text-[50px]" />
+            <FaApple size={50} />
 
             <div className="flex flex-col">
               <p className="text-[12px] text-[#B7BAC7]">Download now</p>
@@ -137,9 +131,9 @@ const { t, i18n } = useTranslation();
           </Link>
           <Link
             to="#"
-            className="flex text-white items-center gap-2 bg-[#363B4766] py-2 justify-center hover:bg-[var(--orange-color)] transition duration-300"
+            className="flex text-white items-center gap-4 bg-[#363B4766] py-3 justify-center hover:bg-[var(--orange-color)] transition duration-300"
           >
-            <FaGooglePlay className="text-[50px]" />
+            <FaGooglePlay size={45} />
 
             <div className="flex flex-col">
               <p className="text-[12px] text-[#B7BAC7]">Download now</p>
@@ -155,7 +149,7 @@ const { t, i18n } = useTranslation();
   <select
      onChange={handleChange}
    defaultValue={i18n.language}
-    className="w-full appearance-none border bg-[#1D2026] border-[#B7BAC7] text-[#E9EAF0] px-4 py-2 pr-10 rounded focus:outline-none"
+    className="w-full appearance-none border bg-[var(--primary-color)] border-[#B7BAC7] text-[#E9EAF0] px-4 py-2 pr-10 rounded focus:outline-none"
   >
     <option value="ar" >العربية</option>
     <option value="en">English</option>
@@ -175,11 +169,8 @@ const { t, i18n } = useTranslation();
 export default Footer;
 
 const FooterItem = ({ name }) => {
-    let isArabic=false
-    if(i18n.language==="ar"){
-      
-      isArabic=true;
-    }
+  const { i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
   return(
   <li className="sm:w-full group">
     <Link

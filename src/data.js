@@ -7,15 +7,15 @@
            {
                title: "Marketing",
                color: "bg-[#EBEBFF]",
-               icon: "/Course Images (2).png"
+               icon: "/Branches.png"
            }, {
                title: "DESIGN",
                color: "bg-[#E1F7E3]",
-               icon: "/Course Images (3).png"
+               icon: "/person.png"
            }, {
                title: "Developments",
                color: "bg-[#EBEBFF]",
-               icon: "/Course Images (4).png"
+               icon: "/immage.png"
            }, {
                title: "Business",
                color: "bg-[#FFF0F0]",

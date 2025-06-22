@@ -8,15 +8,19 @@ import Branch from '../components/Branch'
 import BreadCrumb from "../components/BreadCrumb";
 function ContactUS() {
   return (
-    <div>
-          <BreadCrumb name_page="Contact Us"/> 
+    <div className="grid grid-cols-12">
+      <div className="col-span-12">
+        <BreadCrumb name_page="Contact Us"/> 
+      </div>
+          
 
-      <div className=" flex flex-col bg-[var(--main-bg)] sm:flex-row sm:gap-40  px-5 sm:px-[var(--primary-padding)] gap-5 items-center justify-between border-b-1 border-[#FFDDD1]">
-        <div className="flex w-full flex-col justify-center pb-5 sm:items-start items-center sm:justify-start order-2 sm:w-[80%] gap-4 sm:order-1">
+      <div className="  bg-[var(--main-bg)]   col-span-12 grid  items-center  border-b-1 border-[#FFDDD1]">
+       <div className="grid items-center grid-cols-12 col-span-10 gap-5 ">
+        <div className="flex flex-col items-center justify-center order-2 w-full col-span-10 col-start-2 gap-4 pb-5 lg:col-start-2 lg:col-span-5 lg:items-start sm:justify-start lg:order-1">
           <h1 className="text-[var(--primary-color)] font-[600] sm:text-[40px] text-[30px] p-0 m-0 leading-none">
             Connect with us
           </h1>
-          <p className="text-[var(--p-color)] font-[400] text-[16px] text-center sm:text-start">
+          <p className="text-[var(--p-color)] font-[400] text-[16px] text-center lg:text-start">
             Want to chat? We’d love to hear from you! Get in touch with our
             Customer Success Team to inquire about speaking events, advertising
             rates, or just say hello.
@@ -29,12 +33,13 @@ function ContactUS() {
             <span>Copy Email</span>
           </Link>
         </div>
-        <div className="order-1 w-full sm:order-2">
+        <div className="order-1 w-full col-span-10 col-start-2 lg:col-span-5 lg:col-start-7 lg:order-2">
           <img src="/Fit.png" alt="Gallery 1" className="w-full h-full" />
         </div>
       </div>
-      <div className="sm:px-[var(--primary-padding)] h-full py-[5rem] flex flex-col gap-10">
-        <div className="flex flex-col items-center gap-4 text-center ">
+      </div>
+      <div className="col-span-10 lg:col-start-2 lg:col-span-10  grid grid-cols-12 col-start-2 h-full py-[5rem]   ">
+        <div className="flex flex-col items-center col-span-12 gap-4 text-center ">
           <h1 className="text-[var(--primary-color)] text-[40px] font-[600]">
             Our branches all over the world.
           </h1>
@@ -43,7 +48,8 @@ function ContactUS() {
             imperdiet id leo quis, luctus auctor nisi.{" "}
           </p>
         </div>
-        <div className="flex flex-col h-full gap-4 px-5 sm:flex-row sm:px-0">
+        <div className="col-span-12 mt-10">
+          <div className="grid w-full h-full grid-cols-1 col-span-12 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[0,1,2,3].map((index)=>(
           <Branch
           key={index}
@@ -55,13 +61,15 @@ function ContactUS() {
           />
      ))}
         </div>
+        </div>
       </div>
-      <div className="bg-[var(--secondary-color)] sm:px-[var(--primary-padding)] sm:py-[5rem]">
-        <h1 className="text-center text-[var(--primary-color)] text-[40px] font-[600]">
+      <div className="bg-[var(--secondary-color)] col-span-12  sm:py-[5rem]">
+        <div className="grid grid-cols-12 col-span-10 col-start-2 gap-5">
+        <h1 className="text-center col-span-12  text-[var(--primary-color)] text-[40px] font-[600]">
           Contact us
         </h1>
-        <div className="flex flex-col mt-10 sm:flex-row gap-15">
-          <div className="p-5 sm:p-0">
+        <div className="grid grid-cols-12 col-span-12 mt-10 lg:col-start-2 lg:col-span-10 ">
+          <div className="col-span-10 col-start-2 lg:col-span-6 sm:p-0">
             <p className="text-[var(--p-color)]">
               Will you be in Los Angeles or any other branches any time soon?
               Stop by the office! We'd love to meet.
@@ -98,7 +106,7 @@ function ContactUS() {
               </tbody>
             </table>
           </div>
-          <div className="sm:w-[70%] p-10 bg-[var(--card-bg)]">
+          <div className="lg:col-span-6 col-span-12 p-10 bg-[var(--card-bg)]">
             <form action="" className="">
               <h1 className="text-[var(--primary-color)] text-[24px] font-[500]">
                 Get In touch
@@ -108,7 +116,7 @@ function ContactUS() {
                 friends
               </p>
               <div className="flex flex-col w-full gap-5 mt-5 ">
-                <div className="flex flex-col w-full gap-5 sm:flex-row">
+                <div className="flex flex-col w-full gap-2 sm:flex-row">
                 <Field label="First Name" placeholder="First Name" />
                 <Field label="Last  Name" placeholder="Last  Name" />
                 </div>
@@ -132,8 +140,9 @@ function ContactUS() {
             </form>
           </div>
         </div>
+        </div>
       </div>
-      <div className="w-full">
+      <div className="w-full col-span-12">
         <Link to="#" className="w-full">
           <img src="/Map.png" alt="" className="w-full" />
         </Link>
@@ -146,7 +155,7 @@ export default ContactUS;
 
 function Field({label,placeholder}){
   return(
-     <div className="flex flex-col gap-2">
+     <div className="flex flex-col w-full gap-2">
                   <label htmlFor="" className="text-[var(--primary-color)]">{label}</label>
                   <input
                     type="text"

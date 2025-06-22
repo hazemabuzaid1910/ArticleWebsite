@@ -5,12 +5,14 @@ const useAuthStore = create((set) => {
 
   const token = localStorage.getItem('token');
   const email = localStorage.getItem('email'); 
+  const isAuthenticated=localStorage.getItem('isAuthenticated');
 
   return {
     user: email ? { email } : null,
     token: token || null,
     loading: false,
     error: null,
+    isAuthenticated: false,
 
     signIn: async (email, password) => {
       set({ loading: true, error: null });
@@ -38,9 +40,10 @@ const useAuthStore = create((set) => {
           token,
           loading: false,
         });
-
+       set({ isAuthenticated: true }),
+       localStorage.setItem('isAuthenticated',true)
         localStorage.setItem('token', token);
-        localStorage.setItem('email', email); // حفظ الإيميل
+        localStorage.setItem('email', email); 
       } catch (error) {
         set({
           error: error.message || 'Something went wrong',
@@ -52,6 +55,8 @@ const useAuthStore = create((set) => {
     logout: () => {
       localStorage.removeItem('token');
       localStorage.removeItem('email');
+        set({ isAuthenticated: false }),
+
       set({ user: null, token: null });
     },
   };

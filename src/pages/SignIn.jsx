@@ -4,11 +4,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FaApple, FaFacebookF, FaGoogle } from "react-icons/fa";
 import useAuthStore from "../store/AuthStore";
 import { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { Navigate, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 function SignIn() {
     const navigate = useNavigate(); 
-
+  const{i18n}=useTranslation()
+  const isArabic=i18n.language==="ar"
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,49 +21,52 @@ await(signIn(email,password));
   }
     useEffect(() => {
     if (user) {
-      navigate("/"); // ⬅️ بدل router.push
+      navigate("/"); 
     }
-  }, [user]);
+  }, []);
   return (
-    <div className="flex flex-col h-full gap-10 sm:flex-row">
-      <div className="bg-[var(--create-account-image)] sm:w-[45%] hidden sm:flex   sticky  h-screen">
+    <div className="grid grid-cols-12 ">
+      <div className="relative col-span-12 lg:col-span-6">
+      <div className={`bg-[var(--create-account-image)] lg:fixed ${isArabic ? "right-0":"left-0"}  top-0  h-screen`}>
         <img
           src="/Saly-10.svg"
           alt="Saly Illustration"
           className="object-cover w-full h-full"
         />
-      </div>
+       <div className="absolute inset-0 z-0 bg-black opacity-50 lg:hidden"></div>
 
-      <div className="flex flex-col p-10 sm:w-1/2 sm:px-[5rem] gap-5 sm:py-[5rem]">
-        <h1 className="text-[40px] font-[600] text-[var(--primary-color)] text-center">
+      </div>
+</div>
+      <div className="absolute left-0 right-0 flex flex-col justify-center h-screen col-span-12 gap-5 p-10 lg:relative lg:col-span-6">
+        <h1 className="text-[40px] font-[600] text-white  lg:text-[var(--primary-color)] text-center">
           Sign in to your account
         </h1>
 
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-2">
-            <label className="text-[var(--primary-color)]">Email</label>
+            <label className="lg:text-[var(--primary-color)] text-white">Email</label>
             <input
               type="email"
               placeholder="Email address"
-              className="border text-[var(--p-color)] border-[#E9EAF0] px-4 py-2 focus:outline-none"
+              className="border lg:text-[var(--p-color)] text-[#b8b8b8] border-[#E9EAF0] px-4 py-2 focus:outline-none"
               onChange={(e)=>setEmail(e.target.value)}
             />
           </div>
 
           <div className="flex w-full gap-5">
             <div className="flex flex-col w-full gap-2">
-              <label className="text-[var(--primary-color)]">Password</label>
+              <label className="lg:text-[var(--primary-color)] text-white">Password</label>
               <div className="flex items-center border border-[#E9EAF0] px-4 py-2">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Create password"
-                  className="w-full focus:outline-none text-[var(--p-color)] "
+                  className="w-full focus:outline-none lg:text-[var(--p-color)] text-[#b8b8b8] "
                   onChange={(e)=>setPassword(e.target.value)}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="ml-2 text-gray-500 cursor-pointer focus:outline-none"
+                  className="ml-2 lg:text-[var(--p-color)] text-white cursor-pointer focus:outline-none"
                 >
                   {showPassword ? (
                     <FaEyeSlash size={20} />
@@ -81,7 +85,7 @@ await(signIn(email,password));
                 id="remember"
                 className="scale-150 accent-[#FC5B3F]"
               />
-              <label htmlFor="remember" className="text-[#4E5566]">
+              <label htmlFor="remember" className="lg:text-[#4E5566] text-white">
                 Remmember me
               </label>
             </div>
@@ -95,26 +99,26 @@ await(signIn(email,password));
             </button>
           </div>
           <div className="flex items-center gap-4 my-4">
-            <hr className="flex-grow border-t border-gray-300" />
+            <hr className="flex-grow border-t border-white lg:border-gray-300" />
             <span className="text-gray-500 ">SIGN IN WITH</span>
-            <hr className="flex-grow border-t border-gray-300" />
+            <hr className="flex-grow border-t border-white lg:border-gray-300" />
           </div>
           <div className="flex flex-col justify-between gap-4 sm:flex-row">
-            <button className="border text-[var(--primary-color)] border-[#E9EAF0] py-2 cursor-pointer hover:border-[#f88484] w-full flex items-center gap-5 h-full group">
+            <button className="border lg:text-[var(--primary-color)] text-white border-[#E9EAF0] py-2 cursor-pointer hover:border-[#f88484] w-full flex items-center gap-5 h-full group">
               <div className="w-[30%] h-full items-center flex justify-center border-r group-hover:border-[#f88484] border-[#E9EAF0]">
-                <FaGoogle color="var(--primary-color)" />
+                <FaGoogle color="var(--primary-color) " />
               </div>
               Facebook
             </button>
-            <button className="border text-[var(--primary-color)] border-[#E9EAF0] py-2 cursor-pointer hover:border-[#4267B2] w-full flex items-center gap-5 h-full group">
+            <button className="border lg:text-[var(--primary-color)] text-white  border-[#E9EAF0] py-2 cursor-pointer hover:border-[#4267B2] w-full flex items-center gap-5 h-full group">
               <div className="w-[30%] h-full items-center flex justify-center border-r group-hover:border-[#4267B2] border-[#E9EAF0]">
-                <FaFacebookF color="var(--primary-color)" />
+                <FaFacebookF color="var(--primary-color) " />
               </div>
               Facebook
             </button>
-            <button className="border text-[var(--primary-color)] border-[#E9EAF0] py-2 cursor-pointer hover:border-[#4267B2] w-full flex items-center gap-5 h-full group">
-              <div className="w-[30%] h-full items-center flex justify-center border-r group-hover:border-[#4267B2] border-[#E9EAF0]">
-                <FaApple color="var(--primary-color)" />
+            <button className="border lg:text-[var(--primary-color)] text-white border-[#E9EAF0] py-2 cursor-pointer hover:border-[#4267B2] w-full flex items-center gap-5 h-full group">
+              <div className="w-[30%] h-full items-center flex justify-center border-r text-white group-hover:border-[#4267B2] border-[#E9EAF0]">
+                <FaApple color="var(--primary-color)"/>
               </div>
               Facebook
             </button>

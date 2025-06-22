@@ -5,11 +5,11 @@ import { PiChartPieSlice } from "react-icons/pi";
 
 function OurOpprtunitiesCard({image,text1,color}) {
   return (
-      <div className='flex gap-2 sm:flex-row flex-col  bg-[var(--card-bg)] border border-[var(--card-bg)] hover:shadow-xl duration-300'>
-            <div className='sm:h-38 sm:w-60'>
-                <img src={image} alt="" className='w-full h-full'/>
-            </div>
-            <div className='flex flex-col w-full gap-2 p-2'>
+      <div className='flex  sm:flex-row flex-col w-full justify-between bg-[var(--card-bg)] border border-[var(--secondary-color)] hover:shadow-xl duration-300'>
+           <div className='relative sm:w-[35%] aspect-[4/3]'> 
+           <img src={image} alt="" className='object-cover w-full h-full' />
+          </div>
+            <div className='flex flex-col sm:w-[65%] gap-2 p-2'>
               <div className='flex flex-row justify-between'>
               <span className={`${color} text-[#993D20] p-1 text-[12px] font-[600] w-fit`}>{text1}</span>
               <span className='text-[var(--primary-color)]'>$300<span className='text-gray-400'>/Month</span></span>

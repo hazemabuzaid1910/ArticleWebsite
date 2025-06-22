@@ -5,8 +5,8 @@ function Companies() {
       const data = new Data();
 
   return (
-    <div>
-           <div className="flex sm:flex-row flex-col items-center sm:px-[var(--primary-padding)] sm:py-[5rem] px-4 py-10 sm:gap-10">
+    <div className='grid grid-cols-12'>
+           <div className=" flex sm:flex-row col-span-10 col-start-2 gap-5 lg:gap-0 flex-col items-center  sm:py-[5rem] px-4 py-10 sm:gap-10">
         <div className="flex flex-col gap-2 ">
           <h1 className="text-[var(--primary-color)] sm:text-[32px] text-[24px] font-[var(--text-font-lg)]">
             6.3k trusted companies

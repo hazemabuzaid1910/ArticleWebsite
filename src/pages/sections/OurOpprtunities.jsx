@@ -11,20 +11,22 @@ function OurOpprtunities() {
           const isArabic = i18n.language === "ar";
           const data = new Data();
   return (
-    <div>
+    <div className=''>
         
-      <div className="relative z-10 sm:-mt-[100px] sm:px-[var(--primary-padding)] ">
-        <div className="sm:p-[5rem] flex flex-col gap-5 border border-[var(--main-bg)] bg-[var(--main-bg)] shadow-xl ">
-          <div className="flex flex-col p-5 sm:items-center sm:justify-between sm:flex-row ">
-            <h1 className="text-[30px] font-[var(--text-font-lg)] text-[var(--primary-color)] ">
+      <div className="relative  grid grid-cols-12  z-10 sm:-mt-[100px] ">
+        <div className="sm:py-[5rem] lg:col-span-10 col-span-12 lg:col-start-2  flex flex-col gap-5 border border-[var(--main-bg)] bg-[var(--main-bg)] shadow-xl ">
+          <div className="grid grid-cols-12 ">
+            <h1 className="text-[30px] lg:col-span-4 col-span-10 col-start-2 lg:col-start-2 font-[var(--text-font-lg)] text-[var(--primary-color)] ">
               {t("our_opportunities")}
             </h1>
-            <p className="text-[var(--p-color)] sm:w-[40%]">
+            <p className="text-[var(--p-color)] lg:col-span-4 col-span-10 col-start-2 lg:col-start-8 ">
               Vestibulum sed dolor sed diam mollis maximus vel nec dolor. Donec
               varius purus et eleifend porta.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 ">
+          <div className="lg:grid lg:grid-cols-12 ">
+            <div className='grid grid-cols-12 col-span-10 col-start-2 '>
+              <div className='col-span-10 col-start-2 md:col-span-10 md:col-start-2 lg:grid lg:grid-cols-2 lg:col-span-12 lg:gap-4'>
             {data.articles.slice(0,4).map((article,index)=>(
             <OurOpprtunitiesCard
               key={index}
@@ -33,15 +35,34 @@ function OurOpprtunities() {
               image={article.icon}
             />
             ))}
+          </div></div>
           </div>
-          <div className="flex flex-col items-center justify-center gap-5 mt-5 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-5 pb-5 mt-5 lg:pb-0 sm:flex-row">
             <p className="text-[var(--p-color)]">{t("more_categories")}</p>
-            <Link
+     <Link
               to="#"
-              className="flex items-center gap-2 text-[var(--orange-color)] "
+              className="flex items-center gap-2 text-orange-500 group"
             >
-              {t("browse_all")} {isArabic ? <FaArrowLeft /> : <FaArrowRight />}
+              <span
+                className={`transition-transform duration-700 ease-in-out transform will-change-transform ${
+                  isArabic
+                    ? "group-hover:-translate-x-[20px]"
+                    : "group-hover:translate-x-[20px]"
+                }`}
+              >
+                {t("browse_all")}
+              </span>
+              <span
+                className={`transition-transform duration-700 ease-in-out transform will-change-transform ${
+                  isArabic
+                    ? "group-hover:-translate-x-[20px]"
+                    : "group-hover:translate-x-[20px]"
+                }`}
+              >
+                {isArabic ? <FaArrowLeft /> : <FaArrowRight />}
+              </span>
             </Link>
+
           </div>
         </div>
       </div>

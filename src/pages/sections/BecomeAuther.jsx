@@ -9,12 +9,13 @@ function BecomeAuther() {
           console.log(isArabic)
   return (
     <div>
-          <div className="sm:bg-[var(--secondary-color)]  sm:px-[var(--primary-padding)] sm:py-[5rem] sm:pb-[15rem] sm:mt-[5rem]">
-        <div className="flex flex-col gap-5 sm:flex-row">
-          <div className="bg-[#CC522B] sm:w-[50%] sm:pb-0 pb-[1rem] items-center flex justify-between sm:flex-row flex-col  ">
-            <div className="flex flex-col order-2 gap-5 px-4 pl-10 text-white sm:order-1">
+          <div className="sm:bg-[var(--secondary-color)]  grid grid-cols-12 sm:py-[5rem] sm:pb-[15rem] sm:mt-[5rem]">
+        <div className="grid grid-cols-12 col-span-12 gap-5 lg:col-span-10 lg:col-start-2 ">
+          <div className="bg-[#CC522B] relative lg:col-span-6 col-span-12  sm:pb-0 pb-[1rem] items-center flex justify-between sm:flex-row flex-col  ">
+             <div className="absolute inset-0 z-0 bg-black opacity-50 lg:hidden"></div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center order-2 gap-5 text-white lg:pl-10 lg:items-start lg:static lg:justify-start sm:order-1">
               <h1 className="text-[32px] font-[var(--text-font-lg)]">Become an Author</h1>
-              <p className="text-[14px] font-[var(--text-font-md)]">
+              <p className="text-[14px] font-[var(--text-font-md)] text-center lg:text-start">
                 Authors from around the world teach millions of students on
                 Udemy. We provide the tools and skills to teach what you love.
               </p>
@@ -27,11 +28,11 @@ function BecomeAuther() {
                
               </Link>
             </div>
-            <div className="w-[100%] h-[100%] order-1 sm:order-2">
+            <div className="order-1 w-full h-full sm:order-2">
               <img src="/person.png" alt="" className="w-full h-full" />
             </div>
           </div>
-          <div className="flex flex-col gap-5 bg-[var(--card-bg)] sm:w-[50%] px-8 py-5">
+          <div className="flex flex-col lg:col-span-6 col-span-12  gap-5 bg-[var(--card-bg)]  px-8 py-5">
             <h1 className="text-[32px] font-[var(--text-font-lg)] text-[var(--primary-color)]">
               Your teaching & earning steps
             </h1>

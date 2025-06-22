@@ -15,14 +15,14 @@ function LatestArticle() {
              const data = new Data();
        
   return (
-      <div className="relative">
-        <div className="sm:px-[var(--primary-padding)] sm:pb-[8rem] bg-[var(--secondary-color)] relative">
-          <div className="py-[5rem] flex flex-col gap-8 items-center">
+      <div className="relative ">
+        <div className=" sm:pb-[8rem] grid-cols-12 grid bg-[var(--secondary-color)] relative">
+          <div className="py-[5rem] col-span-10 col-start-2 flex flex-col gap-8 items-center">
             <h1 className="text-[40px] font-[var(--text-font-lg)] text-[var(--primary-color)]">
               {" "}
               {t("latest_articles")}
             </h1>
-            <div className="hidden grid-cols-5 gap-5 sm:grid">
+            <div className="hidden grid-cols-5 gap-5 lg:grid">
               {data.articles.map((article, index) => (
                 <motion.div
                   key={index}
@@ -45,7 +45,7 @@ function LatestArticle() {
               ))}
             </div>
 
-            <div className="block w-full px-4 sm:hidden">
+            <div className="block w-full lg:hidden">
               <Swiper
                 spaceBetween={16}
                 slidesPerView={1.2}

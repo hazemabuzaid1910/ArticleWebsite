@@ -15,15 +15,15 @@ function Writer() {
         const data = new Data();
   return (
     <div>   
-      <div className="z-10 sm:-mt-[150px] sm:px-[var(--primary-padding)]">
-        <div className="relative sm:p-[5rem] flex flex-col gap-5 border border-[var(--main-bg)] bg-[var(--main-bg)] shadow-xl">
+      <div className="z-10 sm:-mt-[150px] grid-cols-12 grid">
+        <div className="relative sm:p-[5rem] col-span-12 lg:col-span-10 lg:col-start-2 flex flex-col gap-5 border border-[var(--main-bg)] bg-[var(--main-bg)] shadow-xl">
           <div className="flex flex-col p-5 sm:items-center ">
             <h1 className="text-[30px] font-[var(--text-font-lg)] text-[var(--primary-color)]">
               Top Writers
             </h1>
           </div>
-
-          <div className="relative">
+          
+          <div className="relative ">
             <button className="hidden sm:flex swiper-button-prev custom-nav-button left-4">
               <FaArrowLeft size={32} />
             </button>
@@ -53,7 +53,7 @@ function Writer() {
             </Swiper>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-5 mt-5 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-5 px-5 pb-5 mt-5 lg:pb-0 sm:flex-row">
             <p className="text-[var(--p-color)] text-center">
               Thousands of users waiting for a Articles. Start writing & earning
               now!.
