@@ -15,7 +15,8 @@ function TopCategory() {
 
   const data = new Data();
   return (
-    <div className="grid grid-cols-12">
+    
+    <div className="grid grid-cols-12 ">
       <div className="  w-full col-span-10 col-start-2 py-15 bg-[var(--main-bg)]">
         <div className="flex flex-col items-center justify-center w-full gap-5 ">
           <h1 className="text-center sm:text-[40px] text-[24px] font-[var(--text-font-lg)] text-[var(--primary-color)]">
@@ -67,8 +68,8 @@ function TopCategory() {
             </Link>
           </div>
         </div>
-      </div>
-    </div>
+      </div></div>
+   
   );
 }
 

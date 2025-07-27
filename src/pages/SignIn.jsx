@@ -6,24 +6,25 @@ import useAuthStore from "../store/AuthStore";
 import { useState,useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { motion, scale } from "framer-motion";
 function SignIn() {
     const navigate = useNavigate(); 
   const{i18n}=useTranslation()
   const isArabic=i18n.language==="ar"
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const { signIn ,user} = useAuthStore();
+  const { signIn ,token} = useAuthStore();
   const handleSubmit=async(e)=>{
        e.preventDefault();
 
-await(signIn(email,password));
+await(signIn(name,password));
   }
     useEffect(() => {
-    if (user) {
+    if (token) {
       navigate("/"); 
     }
-  }, []);
+  }, [token,navigate]);
   return (
     <div className="grid grid-cols-12 ">
       <div className="relative col-span-12 lg:col-span-6">
@@ -46,10 +47,10 @@ await(signIn(email,password));
           <div className="flex flex-col gap-2">
             <label className="lg:text-[var(--primary-color)] text-white">Email</label>
             <input
-              type="email"
+              type="text"
               placeholder="Email address"
               className="border lg:text-[var(--p-color)] text-[#b8b8b8] border-[#E9EAF0] px-4 py-2 focus:outline-none"
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e)=>setName(e.target.value)}
             />
           </div>
 
@@ -90,13 +91,15 @@ await(signIn(email,password));
               </label>
             </div>
 
-            <button
+            <motion.button
               type="submit"
+              transition={{type:"spring",stiffness:300,damping:20}}
+              whileTap={{scale:0.95}}
               className="bg-[#FC5B3F] text-white py-2 px-6 flex items-center gap-2 font-semibold hover:bg-opacity-90"
             >
               Sign in
               <FaArrowRight />
-            </button>
+            </motion.button>
           </div>
           <div className="flex items-center gap-4 my-4">
             <hr className="flex-grow border-t border-white lg:border-gray-300" />

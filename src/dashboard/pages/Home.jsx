@@ -1,13 +1,17 @@
+"use client"
 import React from 'react'
 import StatsCard from '../components/StatsCard';
 import { FaHome, FaSearch, FaEye, FaEdit, FaTrash, FaPlus, FaUsers, FaFileAlt, FaPen, FaChartLine } from 'react-icons/fa';
 import DataTable from '../components/DataTable';
 function Home() {
-          const articlesData = [
-    { id: 1, title: 'How to Learn React', author: 'أحمد محمد', status: 'Published', views: 1234, date: '2024-01-15' },
-    { id: 2, title: 'JavaScript Best Practices', author: 'فاطمة علي', status: 'Draft', views: 856, date: '2024-01-14' },
-    { id: 3, title: 'CSS Grid Tutorial', author: 'محمد حسن', status: 'Published', views: 2341, date: '2024-01-13' }
-  ];
+    const articlesData = [
+  { id: 1, title: 'How to Learn React', author: 'Ahmed Mohamed', status: 'Published', views: 1234, date: '2024-01-15' },
+  { id: 2, title: 'JavaScript Best Practices', author: 'Fatima Ali', status: 'Draft', views: 856, date: '2024-01-14' },
+  { id: 3, title: 'CSS Grid Tutorial', author: 'Mohamed Hassan', status: 'Published', views: 2341, date: '2024-01-13' },
+  { id: 4, title: 'Understanding TypeScript', author: 'Sara Ibrahim', status: 'Published', views: 980, date: '2024-01-12' },
+  { id: 5, title: 'Node.js Crash Course', author: 'Omar Khaled', status: 'Draft', views: 620, date: '2024-01-11' },
+
+];
   return (
     <div>
           <div className="space-y-6">
@@ -44,7 +48,6 @@ function Home() {
               />
             </div>
 
-            {/* Recent Articles */}
             <div className=" bg-[var(--secondary-color)]  border-gray-700 rounded-xl">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold text-[var(--primary-color)]"> Latest Articles</h2>
@@ -67,7 +70,7 @@ function Home() {
                           ? 'bg-green-500 bg-opacity-20'
                           : 'bg-yellow-500 bg-opacity-20 '
                       }`}>
-                        {status === 'Published' ? 'posted' : 'مسودة'}
+                        {status === 'Published' ? 'posted' : 'Draft'}
                       </span>
                     )
                   },

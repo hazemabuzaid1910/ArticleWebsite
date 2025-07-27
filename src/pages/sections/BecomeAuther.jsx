@@ -2,11 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-
+import { motion } from "framer-motion";
+import useAuthStore from '../../store/AuthStore';
 function BecomeAuther() {
+    const { user } = useAuthStore();
+  
           const {i18n} = useTranslation();
           const isArabic = i18n.language === "ar";
-          console.log(isArabic)
+          const MotionLink = motion(Link);
+          
   return (
     <div>
           <div className="sm:bg-[var(--secondary-color)]  grid grid-cols-12 sm:py-[5rem] sm:pb-[15rem] sm:mt-[5rem]">
@@ -19,14 +23,16 @@ function BecomeAuther() {
                 Authors from around the world teach millions of students on
                 Udemy. We provide the tools and skills to teach what you love.
               </p>
-              <Link
-                to="#"
+              <MotionLink
+                to={user?"/add_article":"/signin"}
+                 whileTap={{ scale: 0.95 }}    
+  transition={{ type: "spring", stiffness: 300, damping: 20 }}  
                 className="bg-white w-fit text-[#CC522B] flex gap-2 items-center py-2 px-4"
               >
                 <span>Start Writing</span>
                {isArabic ?   <FaArrowLeft /> : <FaArrowRight /> }
                
-              </Link>
+              </MotionLink>
             </div>
             <div className="order-1 w-full h-full sm:order-2">
               <img src="/person.png" alt="" className="w-full h-full" />

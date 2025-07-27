@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PiNotebookBold, PiUsersLight } from "react-icons/pi";
 import { LuCircleCheckBig } from "react-icons/lu";
 import { FaEdit, FaCamera, FaMapPin, FaPhone, FaEnvelope, FaGlobe, FaCalendar, FaHeart, FaBookmark, FaEye, FaShare, FaGraduationCap, FaAward, FaCertificate } from "react-icons/fa";
 import { BiUser, BiBuilding, BiTime } from "react-icons/bi";
 import { HiOutlineAcademicCap } from "react-icons/hi";
-
+import useUserList from '../store/UserListStore';
 function MyAccount() {
+  const {getUser,userdata}=useUserList()
   const [activeTab, setActiveTab] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
-
+  const id=localStorage.getItem('id')
+  useEffect(()=>{
+    getUser(id)
+  },[])
+  console.log(userdata)
+  console.log(userdata.user_picture?.[0].url)
   const statsData = [
     {
       icon: <PiUsersLight size={40} color="#FF6636" />,
@@ -341,7 +347,7 @@ function MyAccount() {
                 </div>
                 
                 <div className="flex gap-2">
-                  <button className="flex-1 px-3 py-2 text-sm text-white transition-colors bg-orange-500 rounded-lg hover:bg-orange-600">
+                  <button className="flex-1 px-3 py-2 text-sm text-white transition-colors bg-orange-500 hover:bg-orange-600">
                     Continue Learning
                   </button>
                   <button className="p-2 transition-colors border border-gray-300 rounded-lg hover:bg-gray-50">
@@ -395,12 +401,11 @@ function MyAccount() {
         <div className='relative col-span-12 grid grid-cols-12 w-full bg-[var(--secondary-color)] h-[20rem] overflow-hidden'>
       
           
-          <div className='relative flex flex-col items-center w-full col-span-10 col-start-2 pb-5 lg:flex-row lg:items-end '>
-            {/* Profile Image */}
+          <div className='relative flex flex-col items-center w-full col-span-10 col-start-2 gap-5 pb-5 lg:flex-row lg:items-end '>
             <div className="relative group">
-              <div className="w-[200px] lg:w-[280px] border-8 mt-5 border-[var(--orange-color)] h-[200px] lg:h-[280px] overflow-hidden rounded-full shadow-2xl bg-white">
+              <div className="w-[200px] lg:w-[200px] border-4 mt-5 border-[var(--orange-color)] h-[200px] lg:h-[200px] overflow-hidden rounded-full shadow-2xl bg-white">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" 
+                  src={userdata.user_picture?.[0].url} 
                   alt="Profile" 
                   className="object-cover w-full h-full" 
                 />
@@ -410,11 +415,10 @@ function MyAccount() {
               </button>
             </div>
             
-            {/* Profile Info */}
             <div className="mt-6 text-center lg:text-left lg:ml-8 lg:mt-0 lg:pb-8">
-              <h1 className='mb-2 text-3xl font-bold text-[var(--primary-color)] lg:text-5xl drop-shadow-lg'>
-                John Doe
-              </h1>
+              <h1 key={[0]} className='mb-2 text-3xl font-bold text-[var(--primary-color)] lg:text-5xl drop-shadow-lg'>
+  {userdata?.name?.[0]?.value}
+</h1>
               <p className='mb-4 text-lg text-[var(--primary-color)] lg:text-xl text-opacity-90 drop-shadow'>
                 Senior Software Engineer 
               </p>

@@ -26,26 +26,38 @@ import Articles from "./dashboard/pages/Articles";
 import HomeDash from "./dashboard/pages/Home";
 import Writer from "./dashboard/pages/Writer";
 import { useTranslation } from "react-i18next";
-
+import Article from "./pages/Articles";
+import AddArticles from "./pages/AddArticles";
+import ScrollToTop from "./components/ScrollToTop";
+import ArticleDetailes from "./pages/ArticleDetailes";
 function App() {
 
   const location = useLocation();
   const isErrorPage = location.pathname === "/error";
   const signIn = location.pathname === "/signin";
-  const dashboard=location.pathname.startsWith("/dashboard");
+  const dashboard = location.pathname.startsWith("/dashboard");
   const createAccount = location.pathname === "/create-account";
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const{i18n}=useTranslation();
+  const { i18n } = useTranslation();
   useEffect(() => {
     document.body.className = isDarkMode ? "dark" : "light";
   }, [isDarkMode]);
-   useEffect(() => {
-    const currentLang = i18n.language || localStorage.getItem("i18nextLng") || "en";
+  useEffect(() => {
+    const currentLang =
+      i18n.language || localStorage.getItem("i18nextLng") || "en";
     document.body.style.direction = currentLang === "ar" ? "rtl" : "ltr";
   }, [i18n.language]);
+
+
   return (
-    <div>
-     {!dashboard && <Navbar toggleDarkMode={() => setIsDarkMode(!isDarkMode)} isDarkMode={isDarkMode} />}
+    <div className="">
+      {!dashboard && (
+        <Navbar
+          toggleDarkMode={() => setIsDarkMode(!isDarkMode)}
+          isDarkMode={isDarkMode}
+        />
+      )}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -53,27 +65,27 @@ function App() {
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/error" element={<ErrorPage />} />
         <Route path="/faqs" element={<FAQs />} />
+        <Route path="/articles" element={<Article />} />
+        <Route path="/add_article" element={<AddArticles />} />
+        <Route path="/article_detailes/:id" element={<ArticleDetailes />} />
+
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/signin" element={<SignIn />} />
 
-<Route path="/dashboard/*" element={<Dashboard />}>
-  <Route index element={<HomeDash />} />
-
-  <Route path="users" element={<Users />} />
-  <Route path="articles" element={<Articles />} />
-    <Route path="writers" element={<Users />} />
-</Route>
-
-  <Route
-    path="/myaccount"
-    element={
-        <MyAccount />
-    }
-  />
+        <Route path="/dashboard/*" element={<Dashboard />}>
+          <Route index element={<HomeDash />} />
+          <Route path="users" element={<Users />} />
+          <Route path="articles" element={<Articles />} />
+          <Route path="writers" element={<Writer />} />
+        </Route>
+        <Route path="/myaccount" element={<MyAccount />} />
       </Routes>
 
-{!dashboard && !(isErrorPage || signIn || createAccount) ? <Footer /> : isErrorPage ? <FooterError /> : null}
-
+      {!dashboard && !(isErrorPage || signIn || createAccount) ? (
+        <Footer />
+      ) : isErrorPage ? (
+        <FooterError />
+      ) : null}
     </div>
   );
 }

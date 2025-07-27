@@ -20,16 +20,20 @@ import { IoSunnyOutline } from "react-icons/io5";
 import { RiArticleLine } from "react-icons/ri";
 import { MdConnectWithoutContact } from "react-icons/md";
 import { GrServices } from "react-icons/gr";
-
+import {motion} from 'framer-motion'
+import useUserList from "../store/UserListStore";
 function Navbar({ toggleDarkMode, isDarkMode }) {
-  const { user, logout } = useAuthStore();
+
+  const { user,token, logout } = useAuthStore();
+  const { userdata } = useUserList();
   const [isOpen, setIsOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-
+  console.log(user);
+  console.log(userdata?.name?.[0].value);
   const menuRef = useRef(null);
 
-  const onLogout = () => {
-    logout();
+  const onLogout =async () => {
+   await logout();
     setIsOpen(false);
   };
   const location = useLocation();
@@ -53,26 +57,30 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
   const createAccount = location.pathname === "/create-account";
   const isArabic = i18n.language === "ar";
   const [menuOpen, setMenuOpen] = useState(false);
+          const MotionLink = motion.create(Link);
+          
 
   return (
     <header className="sticky top-0 z-50">
       {!(isErrorPage || signIn || createAccount) && (
         <div className="lg:grid grid-cols-12 bg-[var(--primary-bg)] text-white hidden justify-between items-center">
-          <ul className="hidden grid-cols-6 col-span-6 col-start-2 gap-4 lg:grid">
+          <ul className="hidden grid-cols-6 col-span-6 col-start-2 lg:grid">
             {[
               { page: t("Home"), path: "/" },
-              { page: t("Articles"), path: "/faqs" },
+              { page: t("Articles"), path: "/articles" },
               { page: t("vacancies"), path: "/jobs" },
               { page: t("about_us"), path: "/about" },
               { page: t("contact"), path: "/contact" },
+              { page: t("faqs"), path: "/faqs" },
+
             ].map((item, index) => {
               const isActive = location.pathname === item.path;
 
               return (
-                <li key={index} className="col-span-1">
+                <li key={index} className="">
                   <Link
                     to={item.path}
-                    className={`relative inline-block text-center w-full py-4 before:content-[''] before:absolute before:left-0 before:top-0 before:w-full before:h-[2px] before:bg-orange-500 before:origin-left before:transition-transform before:duration-300 ${
+                    className={`relative text-[14px] inline-block text-center  w-full py-4 before:content-['']  before:absolute before:left-0 before:top-0 before:w-full before:h-[2px] before:bg-orange-500 before:origin-left before:transition-transform before:duration-300 ${
                       isActive
                         ? "before:scale-x-100"
                         : "before:scale-x-0 hover:before:scale-x-100 focus:before:scale-x-100"
@@ -119,7 +127,6 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
           >
             <div
               className={`w-5 h-5 rounded-full bg-[#fad4c6] text-sm flex items-center justify-center  duration-300 
-      
     }`}
             >
               {isDarkMode ?   <IoSunnyOutline color="var(--orange-color)"/>:<FaRegMoon color="var(--orange-color)"/>}
@@ -132,7 +139,7 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
             <FaBars color="var(--primary-color)" />
           </div>
         </div>
-        <div className={`items-center hidden col-span-4 col-start-9 gap-4 ${isArabic?"pr-17":"pl-6"} lg:flex`}>
+<div className={`items-center hidden col-span-4 col-start-8 gap-4 justify-end ${isArabic ? "pr-4" : "pl-4"} lg:flex`}>
           <button
             onClick={toggleDarkMode}
             className={`flex items-center justify-between w-14 h-6 mx-2 transition bg-[#fad4c6] border border-[var(--orange-color)] rounded-full cursor-pointer `}
@@ -150,7 +157,7 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
             >
               
             </div>
-            <div className={`transition-transform duration-300
+            <div className={`
             ${isArabic
                   ? isDarkMode
                     ? "translate-x-1"
@@ -162,14 +169,14 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
               {isDarkMode ?   <IoSunnyOutline color="var(--orange-color)"/>:<FaRegMoon color="var(--orange-color)"/>}
             </div>
           </button>
-          {user ? (
+          {token ? (
             <div className="relative " ref={menuRef}>
               <div
                 className="flex items-center gap-2 cursor-pointer"
                 onClick={toggleMenu}
               >
-                <span className="text-[var(--primary-color)] font-semibold">
-                  {user.email}
+                <span key={[0]} className="text-[var(--primary-color)] font-semibold">
+                  {userdata?.name?.[0]?.value}
                 </span>
                 <img
                   src="/Avatar.png"
@@ -207,8 +214,13 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
                 </ul>
               )}
               {showLogoutConfirm && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#00000034] bg-opacity-50">
-                  <div className="p-6 text-center bg-white rounded shadow-lg px-[5rem] py-[5rem]">
+                <div className="fixed inset-0 z-50 flex  items-center justify-center bg-[#00000034] bg-opacity-50">
+                  
+                  <div className=" text-center bg-white flex flex-col items-center gap-5 justify-center rounded shadow-lg px-[5rem]  h-[20rem]">
+                                     <div className="flex items-center w-[75px] h-[75px] justify-center">
+                                      <img src="/GraduationCap.png" alt="" className="object-cover w-full h-full"/>
+                                      </div> 
+
                     <p className="mb-4 font-semibold text-gray-800">
                       Are you sure you want to log out?
                     </p>
@@ -238,23 +250,36 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
          
       <div className="flex items-center gap-2">
          {signIn && ( <span className="text-sm">{t("no_account")}</span>   )}
-      {!createAccount&&<Link
+      {!createAccount&&(
+       <motion.div
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
+      <MotionLink
         to="/create-account"
-        className="py-2 px-5 bg-[#fad4c6] text-[var(--orange-color)] font-bold hover:bg-[#FF6636] hover:text-white transition duration-300"
+        className="py-2 px-5 block bg-[#fad4c6] text-[var(--orange-color)] font-bold hover:bg-[#FF6636] hover:text-white transition duration-300"
       >
         {t("create_account")}
-      </Link>}
-      </div>
- 
-   
+      </MotionLink>
+      </motion.div>
+    )}
+    
+      </div>        
       <div className="flex items-center gap-2">
         {createAccount && ( <span className="text-sm">{t("already_have_account")}</span> )}
-        {!signIn&&<Link
-          to="/signin"
-          className="py-2 px-5 bg-[var(--orange-color)] text-white font-bold hover:bg-[#d95429] transition duration-300"
-        >
-          {t("sign_in")}
-        </Link>}
+          {!signIn && (
+    <motion.div
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
+      <MotionLink
+        to="/signin"
+        className="py-2 px-5 bg-[var(--orange-color)] text-white font-bold hover:bg-[#d95429] transition duration-300 block"
+      >
+        {t("sign_in")}
+      </MotionLink>
+    </motion.div>
+  )}
       </div>
    
   </>
@@ -277,18 +302,22 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
         </div>
         <ul className="flex flex-col gap-4 p-4">
            <li className="flex gap-2 mt-4">
-            <Link
+            <MotionLink
               to="/create-account"
+                 whileTap={{ scale: 0.95 }}    
+         transition={{ type: "spring", stiffness: 300, damping: 20 }}  
               className="block bg-[#FFEEE8] text-[#FF6636] px-4 py-2 text-[14px] font-bold rounded "
             >
               Create Account
-            </Link>
-            <Link
+            </MotionLink>
+            <MotionLink
               to="/signin"
+                 whileTap={{ scale: 0.95 }}    
+         transition={{ type: "spring", stiffness: 300, damping: 20 }}  
               className="block bg-[#FF6636] text-white px-4 py-2 text-[14px] font-bold rounded"
             >
               Sign In
-            </Link>
+            </MotionLink>
           </li>
           {[
             { page: "Home", path: "/" ,icon:<FaHome size={22} color="#fd7e54"/>},

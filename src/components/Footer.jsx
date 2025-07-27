@@ -12,13 +12,19 @@ import {
 } from "react-icons/fa";
 import { FaArrowRight, FaApple, FaGooglePlay } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
+import i18n from '../i18n'
 const Footer = () => {
 const { t, i18n } = useTranslation();
 
   const currentLang = i18n.language || localStorage.getItem("i18nextLng") || "en";
   document.body.style.direction = currentLang === "ar" ? "rtl" : "ltr";
   const handleChange = (e) => {
-
+    if(e.target.value==='ar'){
+      document.body.style.direction= 'rtl'
+    } 
+    else {
+      document.body.style.direction= 'ltr'
+    }
     i18n.changeLanguage(e.target.value);
       localStorage.setItem('i18nextLng', e.target.value); 
 
@@ -26,9 +32,9 @@ const { t, i18n } = useTranslation();
   
   return (
     <footer className="bg-[var(--primary-bg)]">
-      <div className="flex flex-col items-center justify-between gap-5 px-5 py-20 lg:flex-row sm:px-40">
+      <div className="flex flex-col items-center justify-between gap-10 px-5 py-10 xl:py-20 xl:flex-row lg:px-40">
         <div className="sm:w-[600px] w-full">
-          <h1 className="relative text-2xl font-bold text-center text-white sm:text-4xl sm:text-start ">
+          <h1 className="relative text-2xl font-bold text-center text-white sm:text-4xl xl:text-start ">
           { t("footer_statement")}
             <span className="text-[var(--orange-color)] ">{t("the_world")}</span> 
           </h1>
@@ -49,12 +55,12 @@ const { t, i18n } = useTranslation();
         </div>
       </div>
       <hr className="text-[#363B4780]" />
-      <div className="flex flex-col items-center justify-between gap-5 px-5 py-10 lg:flex-row sm:px-40">
-        <div className="flex flex-col items-center gap-4 sm:items-start w-90">
+      <div className="flex flex-col items-center justify-between gap-5 px-5 py-10 xl:flex-row xl:px-40">
+        <div className="flex flex-col items-center gap-4 xl:items-start w-90">
           <Link to="#">
             <img src="/LOGO2.svg" alt="logo" />
           </Link>
-          <p className="text-[#8C94A3] sm:text-start text-center">
+          <p className="text-[#8C94A3] xl:text-start text-center">
             Aliquam rhoncus ligula est, non pulvinar elit convallis nec. Donec
             mattis odio at.
           </p>
@@ -87,8 +93,8 @@ const { t, i18n } = useTranslation();
           </ul>
           <div></div>
         </div>
-        <div className="flex flex-col gap-5 text-center sm:text-start sm:flex-row">
-          <ul className="flex flex-col items-center w-40 sm:items-start">
+        <div className="flex flex-col gap-5 text-center xl:text-start xl:flex-row">
+          <ul className="flex flex-col items-center w-40 xl:items-start">
             <h1 className="text-white font-bold text-[18px] mb-4">
               Top 4 Category
             </h1>
@@ -97,7 +103,7 @@ const { t, i18n } = useTranslation();
             <FooterItem name="Design" />
             <FooterItem name="Business" />
           </ul>
-          <ul className="flex flex-col items-center w-40 sm:items-start">
+          <ul className="flex flex-col items-center w-40 xl:items-start">
             <h1 className="text-white font-bold text-[18px] mb-4">
               Quick Links
             </h1>
@@ -106,7 +112,7 @@ const { t, i18n } = useTranslation();
             <FooterItem name="Contact" />
             <FooterItem name="Career" />
           </ul>
-          <ul className="flex flex-col items-center w-40 sm:items-start">
+          <ul className="flex flex-col items-center w-40 xl:items-start">
             <h1 className="text-white font-bold text-[18px] mb-4">Support</h1>
             <FooterItem name="Help Center" />
             <FooterItem name="FAQs" />
@@ -120,9 +126,9 @@ const { t, i18n } = useTranslation();
           </h1>
           <Link
             to="#"
-            className="flex text-white items-center gap-4 bg-[#363B4766] py-2 justify-center hover:bg-[var(--orange-color)] transition duration-300"
+            className="flex text-white items-center gap-2 bg-[#363B4766] py-1 justify-center hover:bg-[var(--orange-color)] transition duration-300"
           >
-            <FaApple size={50} />
+            <FaApple className="text-[50px]" />
 
             <div className="flex flex-col">
               <p className="text-[12px] text-[#B7BAC7]">Download now</p>
@@ -131,9 +137,9 @@ const { t, i18n } = useTranslation();
           </Link>
           <Link
             to="#"
-            className="flex text-white items-center gap-4 bg-[#363B4766] py-3 justify-center hover:bg-[var(--orange-color)] transition duration-300"
+            className="flex text-white items-center gap-2 bg-[#363B4766] py-2 justify-center hover:bg-[var(--orange-color)] transition duration-300"
           >
-            <FaGooglePlay size={45} />
+            <FaGooglePlay className="text-[50px]" />
 
             <div className="flex flex-col">
               <p className="text-[12px] text-[#B7BAC7]">Download now</p>
@@ -143,7 +149,7 @@ const { t, i18n } = useTranslation();
         </div>
       </div>
       <hr className="text-[#363B4780]" />
-      <div className="flex justify-between py-4 text-center flex-col items-center gap-5  sm:flex-row sm:px-[10rem]">
+      <div className="flex justify-between py-4 text-center flex-col items-center gap-5  xl:flex-row sm:px-[10rem]">
         <p className="text-[#8C94A3] sm:order-1 order-2">© 2025 - All rights reserved</p>
       <div className="relative order-1 inline-block w-48 sm:order-2">
   <select
@@ -169,10 +175,13 @@ const { t, i18n } = useTranslation();
 export default Footer;
 
 const FooterItem = ({ name }) => {
-  const { i18n } = useTranslation();
-  const isArabic = i18n.language === "ar";
+    let isArabic=false
+    if(i18n.language==="ar"){
+      
+      isArabic=true;
+    }
   return(
-  <li className="sm:w-full group">
+  <li className="flex items-center ">
     <Link
       to="#"
       className="flex items-center w-full justify-between text-[#8C94A3] border-b-2 border-transparent hover:border-[var(--orange-color)] transition duration-300 py-2"

@@ -180,4 +180,95 @@
            { img1: "/img3.png" },
            { img1: "/img4.png" },
        ];
+
+       categoriees = [
+           { name: "All", count: 124, color: "bg-gray-100 text-gray-700" },
+           { name: "Development", count: 45, color: "bg-blue-100 text-blue-700" },
+           { name: "Design", count: 32, color: "bg-purple-100 text-purple-700" },
+           { name: "Marketing", count: 28, color: "bg-green-100 text-green-700" },
+           { name: "Business", count: 19, color: "bg-orange-100 text-orange-700" },
+           { name: "Finance", count: 15, color: "bg-red-100 text-red-700" },
+           { name: "Technology", count: 23, color: "bg-indigo-100 text-indigo-700" }
+       ];
+
+       articlees = [{
+               id: 1,
+               title: "Advanced React Patterns and Best Practices",
+               excerpt: "Learn about advanced React patterns including render props, compound components, and custom hooks to build scalable applications.",
+               author: "Sarah Johnson",
+               authorImage: "https://images.unsplash.com/photo-1494790108755-2616b612b3fd?w=40&h=40&fit=crop&crop=face",
+               date: "2024-01-15",
+               readTime: "8 min read",
+               category: "Development",
+               views: 1234,
+               rating: 4.8,
+               image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=250&fit=crop",
+               featured: true
+           },
+           {
+               id: 2,
+               title: "UI/UX Design Principles for Modern Web Applications",
+               excerpt: "Discover the fundamental design principles that make web applications both beautiful and functional for users.",
+               author: "Michael Chen",
+               authorImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face",
+               date: "2024-01-12",
+               readTime: "6 min read",
+               category: "Design",
+               views: 987,
+               rating: 4.6,
+               image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop"
+           },
+           {
+               id: 3,
+               title: "Digital Marketing Strategies That Actually Work",
+               excerpt: "Explore proven digital marketing strategies that deliver real results and help grow your business online.",
+               author: "Emma Davis",
+               authorImage: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face",
+               date: "2024-01-10",
+               readTime: "10 min read",
+               category: "Marketing",
+               views: 756,
+               rating: 4.7,
+               image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop"
+           },
+           {
+               id: 4,
+               title: "Building Scalable Business Models in 2024",
+               excerpt: "Learn how to create and scale business models that can adapt to changing market conditions and customer needs.",
+               author: "David Wilson",
+               authorImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face",
+               date: "2024-01-08",
+               readTime: "12 min read",
+               category: "Business",
+               views: 642,
+               rating: 4.5,
+               image: "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=400&h=250&fit=crop"
+           },
+           {
+               id: 5,
+               title: "Personal Finance Management for Professionals",
+               excerpt: "Master the art of personal finance management with practical tips and strategies for long-term wealth building.",
+               author: "Lisa Thompson",
+               authorImage: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=40&h=40&fit=crop&crop=face",
+               date: "2024-01-05",
+               readTime: "7 min read",
+               category: "Finance",
+               views: 523,
+               rating: 4.4,
+               image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=250&fit=crop"
+           },
+           {
+               id: 6,
+               title: "The Future of Artificial Intelligence and Machine Learning",
+               excerpt: "Explore the latest trends and developments in AI and ML that are shaping the future of technology.",
+               author: "Alex Rodriguez",
+               authorImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face",
+               date: "2024-01-03",
+               readTime: "15 min read",
+               category: "Technology",
+               views: 891,
+               rating: 4.9,
+               image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop"
+           }
+       ];
    }

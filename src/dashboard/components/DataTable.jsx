@@ -27,19 +27,19 @@ function DataTable({ data, columns, onEdit, onDelete, onView }) {
                   <div className="flex gap-2">
                     <button
                       onClick={() => onView && onView(row)}
-                      className="p-2 text-blue-400 rounded hover:bg-blue-400 hover:bg-opacity-20"
+                      className="p-2 text-blue-400 rounded hover:bg-blue-400 hover:text-white hover:bg-opacity-20"
                     >
                       <FaEye size={16} />
                     </button>
                     <button
                       onClick={() => onEdit && onEdit(row)}
-                      className="p-2 text-green-400 rounded hover:bg-green-400 hover:bg-opacity-20"
+                      className="p-2 text-green-400 rounded hover:bg-green-400 hover:text-white hover:bg-opacity-20"
                     >
                       <FaEdit size={16} />
                     </button>
                     <button
                       onClick={() => onDelete && onDelete(row)}
-                      className="p-2 text-red-400 rounded hover:bg-red-400 hover:bg-opacity-20"
+                      className="p-2 text-red-400 rounded hover:bg-red-400 hover:text-white hover:bg-opacity-20"
                     >
                       <FaTrash size={16} />
                     </button>

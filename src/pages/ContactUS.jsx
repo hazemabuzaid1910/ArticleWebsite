@@ -25,13 +25,12 @@ function ContactUS() {
             Customer Success Team to inquire about speaking events, advertising
             rates, or just say hello.
           </p>
-          <Link
-            to="#"
+        <button
             className="bg-[var(--orange-color)] text-white px-8 py-2 w-fit flex gap-2 items-center"
           >
             <MdOutlineMailOutline  size={25}/>
             <span>Copy Email</span>
-          </Link>
+          </button>
         </div>
         <div className="order-1 w-full col-span-10 col-start-2 lg:col-span-5 lg:col-start-7 lg:order-2">
           <img src="/Fit.png" alt="Gallery 1" className="w-full h-full" />
@@ -143,9 +142,14 @@ function ContactUS() {
         </div>
       </div>
       <div className="w-full col-span-12">
-        <Link to="#" className="w-full">
-          <img src="/Map.png" alt="" className="w-full" />
-        </Link>
+        <Link to="https://www.google.com/maps?q=30.5138,36.2765" className="w-full">
+
+  <img
+    src="/Map.png" // استبدل بمسار صورة الخريطة الحقيقي
+    alt="Our Location"
+    className="w-full transition duration-300 cursor-pointer hover:opacity-80"
+  />
+      </Link>
       </div>
     </div>
   );
